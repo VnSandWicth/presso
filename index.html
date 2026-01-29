@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>FOLKPRESSO — Menu</title>
+
+  <!-- Font (opsional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- background putih + blur blobs -->
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <main class="wrap">
+    <!-- Kotak panjang (logo mark) -->
+    <section class="logoMark glass">
+      <div class="logoMark__inner">
+        <div class="logoMark__brand">
+          <div class="mark" aria-hidden="true">✦</div>
+          <div class="brandText">
+            <div class="big">FOLKPRESSO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nama toko -->
+    <h2 class="storeName">FOLKPRESSO MENU</h2>
+
+    <!-- Row 1: Coffee -->
+    <section class="rowBlock">
+      <div class="rowTitle">
+        <span class="dot red"></span>
+        <h3>COFFEE</h3>
+      </div>
+
+      <div class="carousel glass">
+        <div class="carousel__viewport" id="coffeeViewport" aria-label="Carousel Coffee">
+          <div class="carousel__track" id="coffeeTrack"></div>
+        </div>
+        <div class="fade fade--left" aria-hidden="true"></div>
+        <div class="fade fade--right" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Row 2: Non Coffee -->
+    <section class="rowBlock">
+      <div class="rowTitle">
+        <span class="dot orange"></span>
+        <h3>NON COFFEE</h3>
+      </div>
+
+      <div class="carousel glass">
+        <div class="carousel__viewport" id="noncoffeeViewport" aria-label="Carousel Non Coffee">
+          <div class="carousel__track" id="noncoffeeTrack"></div>
+        </div>
+        <div class="fade fade--left" aria-hidden="true"></div>
+        <div class="fade fade--right" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>© <span id="year"></span> FOLKPRESSO</p>
+    </footer>
+  </main>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
