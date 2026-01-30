@@ -1,0 +1,262 @@
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; 
+    /* Gradasi dari putih ke abu-abu */ 
+    background: linear-gradient(to bottom, #ffffff, #dad3d3); 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+}
+/* Efek dasar Fade In saat halaman baru dimuat */
+body {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Class khusus yang akan dipicu lewat JS sebelum pindah halaman */
+body.fade-out {
+    opacity: 0;
+}
+
+/* Animasi Fade In saat awal buka halaman */
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    animation: fadeInPage 0.5s ease-in-out;
+}
+.folkpresso-footer { 
+    background-color: #1f1f1f; 
+    color: #e0e0e0; 
+    padding: 40px 20px; 
+    text-align: center; 
+    font-family: 'Poppins', sans-serif; 
+    border-top: 1px solid #444; } 
+    
+    .footer-inner p { 
+        margin: 10px 0; 
+        font-size: 14px; 
+        letter-spacing: 0.5px; } 
+        
+        .ig-link img { 
+            width: 26px; 
+            height: 26px; 
+            margin-left: 6px; 
+            vertical-align: middle; 
+            transition: transform 0.3s ease, filter 0.3s ease; } 
+            
+            .ig-link img:hover { 
+                transform: scale(1.1); 
+                filter: brightness(1.3); } 
+                
+                
+/* Navbar persis gambar */
+/* Container utama untuk logo dan teks */
+.logo-container {
+    display: flex;
+    align-items: center; /* Menyejajarkan logo dan teks tepat di tengah secara vertikal */
+    gap: 15px;           /* Memberi jarak horizontal antara logo dan tulisan */
+}
+
+/* Mengatur ukuran logo */
+.merk {
+    height: 50px;        /* Atur tinggi logo agar sesuai dengan ukuran teks navbar */
+    width: auto;         /* Lebar otomatis agar gambar tidak gepeng */
+    object-fit: contain;
+}
+
+/* Mengatur gaya tulisan FOLKPRESSO */
+.logo-text {
+    font-weight: 800;
+    font-size: 2.2rem;   /* Sesuaikan dengan font-size navbar Anda sebelumnya */
+    line-height: 1;
+}
+
+/* Pastikan navbar memberikan ruang yang cukup */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 30px 60px;  /* Sesuai dengan padding asli Anda */
+}
+/* Hero Section: Gelas di Kiri, Teks di Kanan */
+.hero {
+    display: flex; align-items: center;
+    padding: 0 300px; height: 500px;
+}
+
+
+
+.hero-left { flex: 1; display: flex; justify-content: center; }
+.hero-right { flex: 1.5; padding-left: 20px; }
+
+.hero-img {
+    width: 390px; /* Ukuran besar sesuai gambar */
+    filter: drop-shadow(0 90px 40px rgba(0,0,0,0.1));
+}
+
+.hero-right h1 {
+    font-size: 5rem; font-weight: 900; line-height: 1; color: #000;
+}
+
+.tagline {
+    font-size: 1.9rem; margin-top: 25px; color: #444; font-style: italic;
+}
+
+
+/* Area Menu dengan Background Gradasi Abu-abu */
+.main-content {
+    background: linear-gradient(180deg, #f2ecec04 0%, #e7dfdf 20%, #cbb0b0 100%);
+    padding-top: 90px; padding-bottom: 100px;
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+   
+}
+
+.category-title {
+   padding: 3%; padding-left: 100px; font-size: 2.2rem; font-weight: 800; margin: 40px 0 20px 0; text-align: center;
+}
+
+/* Carousel Infinity */
+.carousel {
+    width: 100%; overflow: hidden; cursor: grab; padding: 30px 0;
+}
+
+.track {
+    display: flex; gap: 35px; width: max-content;
+}
+
+/* Product Card - Efek Glassmorphism Tinggi */
+.card {
+    width: 320px; height: 420px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 25px; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    position: relative; /* penting agar overlay bisa absolute */ 
+    overflow: hidden;
+}
+
+.overlay { 
+    position: absolute; 
+    top: 0; 
+    left: 0;
+     width: 100%; 
+     height: 100%; 
+     background: rgba(0,0,0,0.4); 
+     color: #fff; 
+     font-size: 1.6rem;
+      font-weight: bold; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+       opacity: 0; /* default tidak terlihat */ 
+       transition: opacity 0.3s ease; 
+       border-radius: 40px; /* sama dengan card */ 
+    }
+
+.shape {
+    width: 100%; height: 75%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px; margin-bottom: 20px; overflow: hidden;
+}
+
+.shape img { width: 100%; height: 100%; object-fit: cover; }
+
+.card p { font-weight: 800; font-size: 1.4rem; color: #000; }
+
+/* Pop-up Effect */
+.card:hover {
+    transform: translateY(-30px) scale(1.03);
+    box-shadow: 0 40px 60px rgba(0,0,0,0.08);
+}
+
+.card:hover .overlay { 
+    opacity: 1; /* muncul saat hover */ 
+}
+
+/* Animasi Loop */
+/* Hapus atau komentari bagian animasi CSS sebelumnya */
+/* .rtl .track { animation: scrollRTL 35s linear infinite; } */
+/* .ltr .track { animation: scrollLTR 35s linear infinite; } */
+
+.track {
+    display: flex;
+    gap: 35px;
+    width: max-content;
+    will-change: transform; /* Optimasi agar swipe lancar */
+    cursor: grab;
+}
+
+.carousel:active .track {
+    cursor: grabbing;
+}
+
+.card {
+    user-select: none; /* Mencegah teks terpilih saat di-swipe */
+    -webkit-user-drag: none; /* Mencegah gambar ikut ter-drag */
+}
+
+.card img {
+    pointer-events: none; /* Agar gambar tidak mengganggu proses swipe */
+    pointer-events: none; /* Penting agar swipe tidak nyangkut di gambar */
+    -webkit-user-drag: none;
+}
+
+.card {
+    cursor: pointer; /* Menandakan elemen bisa diklik */
+    user-select: none;
+}
+
+.card:active {
+    transform: scale(0.95); /* Efek visual saat kartu ditekan */
+    transition: transform 0.1s;
+}
+
+
+
+.rtl .track { animation: scrollRTL 35s linear infinite; }
+.ltr .track { animation: scrollLTR 35s linear infinite; }
+
+
+/* Responsive Mobile (iPhone/Android) */
+@media (max-width: 768px) {
+    .hero { flex-direction: column; height: auto; padding: 40px 20px; text-align: center; }
+    .hero-right h1 { font-size: 3.8rem;  }
+    .hero-img { width: 220px; margin-bottom: 30px; }
+    .card { width: 240px; height: 320px; }
+    .category-title { padding-left: 20px; font-size: 1.8rem; text-align: center; }
+    .folkpresso-footer { padding: 30px 15px; } 
+    .footer-inner p { font-size: 13px; } 
+    .ig-link img { width: 22px; height: 22px; } 
+    .navbar { padding: 15px 20px; /* Padding lebih kecil di HP */}
+    .logo-wrapper { gap: 10px; /* Jarak lebih rapat di HP */ }
+    .merk { width: 40px; /* Logo mengecil di HP agar tidak memenuhi layar */ }
+    .logo-text { font-size: 1.4rem; /* Teks mengecil agar tidak pecah/turun ke bawah */ }
+    
+/* Perbaikan Hero Section agar gambar tidak menutupi teks */
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding-top: 20px;
+    }
+    
+    .hero-img {
+        width: 220px; /* Ukuran gambar kopi mengecil di HP */
+    }
+}
+
+
+
+
+   
