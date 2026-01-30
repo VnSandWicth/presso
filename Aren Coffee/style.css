@@ -40,6 +40,8 @@ body {
     font-weight: bold;
 }
 
+
+
 /* Navbar persis gambar */
 /* Container utama untuk logo dan teks */
 .logo-container {
@@ -77,25 +79,86 @@ body {
     cursor: pointer;
 }
 
-/* Efek dasar Fade In saat halaman baru dimuat */
-body {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-/* Class khusus yang akan dipicu lewat JS sebelum pindah halaman */
-body.fade-out {
+/* --- Efek Pop Up Halus saat Masuk --- */
+.detail-info h1, 
+.detail-info p, 
+.btn-back {
     opacity: 0;
+    animation: smoothPopUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* Animasi Fade In saat awal buka halaman */
-@keyframes fadeInPage {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.detail-info p { animation-delay: 0.2s; }
+.btn-back { animation-delay: 0.4s; }
+
+@keyframes smoothPopUp {
+    0% { transform: scale(0.8) translateY(30px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
-body {
-    animation: fadeInPage 0.5s ease-in-out;
+/* --- Efek 3D & Rotasi Kopi --- */
+.hero-img-wrapper {
+    perspective: 1500px; /* Memberi ruang kedalaman 3D */
+    overflow: visible;
+}
+
+.hero-img-target {
+    display: block;
+    transition: opacity 0.5s ease;
+    transform-origin: center center;
+}
+
+/* Class yang dipicu JS setelah partikel selesai */
+.coffee-3d-active {
+    animation: rotate360 10s linear infinite !important;
+    filter: drop-shadow(0 25px 50px rgba(0,0,0,0.2));
+}
+
+@keyframes rotate360 {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* --- Efek Wave Smooth --- */
+@keyframes smoothWave {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(2px, -8px) rotate(0.5deg); /* Naik dan sedikit geser */
+    }
+    66% {
+        transform: translate(-2px, 4px) rotate(-0.5deg); /* Turun dan sedikit geser */
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* Terapkan pada elemen teks */
+.detail-info h1, 
+.detail-info p {
+    display: block;
+    opacity: 0;
+    /* Animasi 1: Pop up saat masuk */
+    /* Animasi 2: Wave yang sangat halus dan lambat */
+    animation: 
+        smoothPopUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+        smoothWave 6s ease-in-out infinite 1.2s; /* Durasi 6 detik agar sangat tenang */
+}
+
+/* Variasi delay agar h1 dan p tidak bergerak bersamaan (efek riak) */
+.detail-info p {
+    animation-delay: 0.3s, 1.5s; 
+}
+
+/* Opsional: Membuat tiap baris sedikit berbeda kecepatannya */
+.detail-info p strong {
+    display: inline-block;
+    animation: smoothWave 5s ease-in-out infinite 1.8s;
 }
 /* Responsive Mobile */
 @media (max-width: 768px) {

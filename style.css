@@ -12,26 +12,26 @@ body {
     display: flex; 
     flex-direction: column;
 }
-/* Efek dasar Fade In saat halaman baru dimuat */
+
+/* State awal: Body transparan untuk Fade In */
 body {
-    opacity: 1;
-    transition: opacity 0.5s ease;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    background: linear-gradient(to bottom, #ffffff, #dad3d3);
+    min-height: 100vh;
 }
 
-/* Class khusus yang akan dipicu lewat JS sebelum pindah halaman */
+/* State saat halaman aktif */
+body.page-loaded {
+    opacity: 1;
+}
+
+/* State saat ingin pindah halaman (Fade Out) */
 body.fade-out {
     opacity: 0;
+    pointer-events: none; /* Cegah klik ganda saat transisi */
 }
 
-/* Animasi Fade In saat awal buka halaman */
-@keyframes fadeInPage {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-body {
-    animation: fadeInPage 0.5s ease-in-out;
-}
 .folkpresso-footer { 
     background-color: #1f1f1f; 
     color: #e0e0e0; 
@@ -91,7 +91,59 @@ body {
     padding: 0 300px; height: 500px;
 }
 
+et.assembled {
+    opacity: 1;
+    transform: scale(1);
+}
 
+/* Style untuk pecahan-pecahan kecil */
+.coffee-particle {
+    position: absolute;
+    width: 30p/* Container Utama */
+}
+/* Container Utama */
+.hero-img-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px;
+}
+
+.hero-img-target {
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transform: scale(0.9);
+    /* Transisi sangat halus untuk gambar utama */
+    transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 5;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+}
+
+.hero-img-target.assembled {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.coffee-particle {
+    position: absolute;
+    width: 80px; /* Ukuran serpihan lebih besar agar tidak terlihat seperti pixel */
+    height: 80px;
+    background-image: url('img/biji kopi.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    /* Animasi pergerakan yang 'liquid' (cair) */
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.8s ease-out, 
+                filter 0.8s ease-out;
+}
 
 .hero-left { flex: 1; display: flex; justify-content: center; }
 .hero-right { flex: 1.5; padding-left: 20px; }

@@ -93,18 +93,81 @@ document.querySelectorAll('.carousel').forEach(container => {
     animate();
 });
 
-// GANTI LOGIKA PINDAH HALAMAN LAMA DENGAN INI:
-if (distanceX < 5 && distanceY < 5) {
-    const card = e.target.closest('.card');
-    if (card && card.dataset.url) {
-        const targetUrl = card.dataset.url;
 
-        // Tambahkan class fade-out ke body
-        document.body.classList.add('fade-out');
 
-        // Tunggu 500ms (sesuai durasi transition di CSS) baru pindah halaman
-        setTimeout(() => {
-            window.location.href = targetUrl;
-        }, 500);
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('coffee-assemble-container');
+    const targetImg = document.querySelector('.hero-img-target');
+    
+    if (!container || !targetImg) return;
+
+    const particleCount = 12; // Jumlah lebih sedikit tapi ukuran lebih besar untuk kesan smooth
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('coffee-particle');
+
+        // Posisi acak melingkar yang sangat luas
+        const angle = (i / particleCount) * Math.PI * 2;
+        const distance = 400 + Math.random() * 200;
+        const startX = Math.cos(angle) * distance;
+        const startY = Math.sin(angle) * distance;
+        
+        // Random blur agar tidak terlihat berpiksel
+        const randomBlur = 10 + Math.random() * 20;
+
+        particle.style.opacity = '0';
+        particle.style.filter = `blur(${randomBlur}px)`; // Efek bokeh/blur awal
+        particle.style.transform = `translate(${startX}px, ${startY}px) scale(${0.5 + Math.random()}) rotate(${Math.random() * 360}deg)`;
+
+        container.appendChild(particle);
+
+        // Menjalankan animasi menyatu
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                particle.style.opacity = '0.6'; // Partikel semi-transparan agar halus saat bertumpuk
+                particle.style.transform = `translate(0, 0) scale(1) rotate(0deg)`;
+                particle.style.filter = 'blur(2px)'; // Tetap agak blur agar menyatu lembut
+            }, i * 30);
+        });
     }
-}
+
+    // Penyatuan akhir ke gambar yang tajam
+    setTimeout(() => {
+        targetImg.classList.add('assembled');
+        
+        const particles = document.querySelectorAll('.coffee-particle');
+        particles.forEach(p => {
+            p.style.opacity = '0';
+            p.style.transform = 'scale(1.5)';
+            p.style.filter = 'blur(20px)'; // Menghilang dengan efek "evaporasi" blur
+        });
+    }, 1100);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Picu Fade In segera setelah struktur siap
+    // Ini tidak akan mengganggu partikel karena partikel punya animasinya sendiri
+    setTimeout(() => {
+        document.body.classList.add('page-loaded');
+    }, 10);
+
+    // 2. Fungsi Global untuk pindah halaman dengan Fade Out
+    window.navigateTo = function(url) {
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = url;
+        }, 600); // Harus sama dengan durasi transition di CSS (0.6s)
+    };
+
+    // 3. Update Logika Klik pada Carousel (Cari bagian stopDrag Anda)
+    // Pastikan bagian pengecekan klik diubah seperti ini:
+    /*
+    if (distanceX < 5 && distanceY < 5) {
+        const card = e.target.closest('.card');
+        if (card && card.dataset.url) {
+            navigateTo(card.dataset.url); // Panggil fungsi transisi
+        }
+    }
+    */
+});
