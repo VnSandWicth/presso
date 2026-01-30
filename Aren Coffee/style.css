@@ -1,0 +1,112 @@
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; 
+    /* Gradasi dari putih (#ffffff) ke abu-abu terang (#dad3d3) */
+    background: linear-gradient(to bottom, #ffffff 0%, #dad3d3 100%);
+    background-attachment: fixed; /* Agar gradasi tetap diam saat di-scroll */
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+.detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 0px ;
+    padding-right: 200px;
+    gap: 50px;
+}
+.detail-card {
+    max-width: 900px;
+    display: flex;
+    padding: 50px;
+    gap: 40px;
+}
+.detail-img {
+    width: 550px;
+    border-radius: 0px;
+}
+.detail-info h1 { font-size: 5rem; margin-bottom: 20px; }
+.detail-info p { font-size: 1.2rem; line-height: 1.6; color: #444; }
+.btn-back {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    background: #000000;
+    color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+/* Navbar persis gambar */
+/* Container utama untuk logo dan teks */
+.logo-container {
+    display: flex;
+    align-items: center; /* Menyejajarkan logo dan teks tepat di tengah secara vertikal */
+    gap: 15px;           /* Memberi jarak horizontal antara logo dan tulisan */
+}
+
+/* Mengatur ukuran logo */
+.merk {
+    height: 50px;        /* Atur tinggi logo agar sesuai dengan ukuran teks navbar */
+    width: auto;         /* Lebar otomatis agar gambar tidak gepeng */
+    object-fit: contain;
+}
+
+/* Mengatur gaya tulisan FOLKPRESSO */
+.logo-text {
+    font-weight: 800;
+    font-size: 2.2rem;   /* Sesuaikan dengan font-size navbar Anda sebelumnya */
+    line-height: 1;
+}
+
+/* Pastikan navbar memberikan ruang yang cukup */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 30px 60px;  /* Sesuai dengan padding asli Anda */
+}
+
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara logo dan teks */
+    cursor: pointer;
+}
+
+/* Efek dasar Fade In saat halaman baru dimuat */
+body {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Class khusus yang akan dipicu lewat JS sebelum pindah halaman */
+body.fade-out {
+    opacity: 0;
+}
+
+/* Animasi Fade In saat awal buka halaman */
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    animation: fadeInPage 0.5s ease-in-out;
+}
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .detail-container { flex-direction: column; padding: 20px; }
+    .detail-card { flex-direction: column; padding: 30px; text-align: center; }
+    .detail-img { width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .navbar { padding: 15px 20px; }
+    .logo-wrapper { gap: 10px; }
+    .logo-text { font-size: 1.4rem; } /* Kecilkan teks di mobile */
+    .merk { width: 40px; } /* Kecilkan logo di mobile */
+}
