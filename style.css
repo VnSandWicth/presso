@@ -176,6 +176,7 @@ body.fade-out {
     width: 100%;
     margin-top: 100px; /* Memberikan jarak agar tidak langsung terlihat di awal */
     z-index: 1;
+    
 }
 
 .marquee {
@@ -188,11 +189,12 @@ body.fade-out {
     display: flex;
     white-space: nowrap;
     gap: 40px; /* Jarak antar teks */
+   
 }
 
 .marquee-content span {
     display: inline-block;
-    font-family: "Anton", sans-serif;
+    font-family: "Titan One", sans-serif cursive;
     font-size: 11vw; /* Ukuran dinamis agar meluap sedikit keluar layar secara clean */
     font-weight: 900;
     font-style: italic;
@@ -202,6 +204,13 @@ body.fade-out {
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: 1px;
+
+    text-shadow: 
+        1px 1px 0px #ffffff,
+        2px 2px 0px #ebdddd,
+        3px 3px 0px #b1b1b1,
+        4px 4px 0px #a1a1a1,
+        5px 5px 10px rgba(0, 0, 0, 0.138); /* Bayangan halus paling bawah */
 }
 
 .marquee-bottom .marquee-content span {
@@ -681,13 +690,16 @@ et.assembled {
         margin-top: 250px !important;
         margin-bottom: 150px;
         padding-top: 0 !important;
+    
     }
 
     .marquee-content span {
-        font-size: 20vw !important;
+        font-size: 25vw !important;
         /* Stroke sangat tipis untuk mobile agar terlihat 'Clean' */
-        -webkit-text-stroke: 5.5px #e6d2d2 !important; 
-         letter-spacing: 25px;
+        -webkit-text-stroke: 7.5px #e6d2d2 !important; 
+        letter-spacing: 10px;
+        ffont-family: "Titan One", sans-serif, cursive !important;
+        
     }
 
     /* Mencegah layar goyang karena teks meluap */
@@ -781,7 +793,4 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
-
-
-
 
