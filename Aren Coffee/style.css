@@ -263,15 +263,10 @@ body {
         line-height: 1.4; 
     }
     .navbar { 
-        padding: 15px 20px;
-     }
-    .logo-wrapper { 
-        gap: 10px;
-     }
-    .logo-text {
-         font-size: 1.4rem; 
-        } /* Kecilkan teks di mobile */
-    .merk {
-        width: 40px; 
-    } /* Kecilkan logo di mobile */
+        padding: 15px 20px; 
+        justify-content: center; /* Pusatkan logo di mobile */
+    }
+    .logo-wrapper { gap: 10px; /* Jarak lebih rapat di HP */ }
+    .merk { height: 35px; }
+    .logo-text { font-size: 1.5rem; }
 }
