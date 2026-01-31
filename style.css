@@ -706,7 +706,6 @@ et.assembled {
             2px 2px 4px rgba(0,0,0,0.1) !important;
         
         padding: 5px 10px !important;
-    }
         letter-spacing: 10px;
         font-family: "Titan One", sans-serif, cursive !important;
         
@@ -803,6 +802,7 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
+
 
 
 
