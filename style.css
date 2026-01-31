@@ -696,7 +696,7 @@ et.assembled {
     .marquee-content span {
         font-size: 25vw !important;
         /* Stroke sangat tipis untuk mobile agar terlihat 'Clean' */
-        -webkit-text-stroke: 7.5px #e6d2d2 !important; 
+        -webkit-text-stroke: 3px #e6d2d2 !important; 
         letter-spacing: 10px;
         font-family: "Titan One", sans-serif, cursive !important;
         
@@ -793,5 +793,6 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
+
 
 
