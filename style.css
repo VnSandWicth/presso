@@ -686,7 +686,7 @@ et.assembled {
     .marquee-content span {
         font-size: 20vw !important;
         /* Stroke sangat tipis untuk mobile agar terlihat 'Clean' */
-        -webkit-text-stroke: 7.5px #e6d2d2 !important; 
+        -webkit-text-stroke: 5.5px #e6d2d2 !important; 
     }
 
     /* Mencegah layar goyang karena teks meluap */
@@ -780,4 +780,5 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
+
 
