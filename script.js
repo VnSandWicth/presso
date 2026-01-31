@@ -8,7 +8,7 @@ document.querySelectorAll('.carousel').forEach(container => {
     let currentPos = 0;
     const isLTR = container.classList.contains('ltr');
     let direction = isLTR ? 1 : -1;
-    let speed = 1.2 * direction; 
+    let speed = 0.5 * direction; 
     
     let isDragging = false;
     let startX = 0;
@@ -180,3 +180,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ... sisa logika navigasi Anda
 });
+
