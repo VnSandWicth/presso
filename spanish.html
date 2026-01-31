@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cappuccino - Folkpresso</title>
+    <title>Folkpresso - Authentic Coffee</title>
+    <link rel="icon" type="img/ico" sizes="40x40" href="img/fp.ico" >
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
-    <link rel="stylesheet" href="spanish/style.css" >
+    <link rel="stylesheet" href="product/style.css" >
 </head>
 <body>
     <nav class="navbar">
@@ -20,14 +21,14 @@
         <div class="loader-content">
             <img src="img/logo.png" alt="Loading..." class="loader-logo">
             <div class="progress-bar"><div class="progress-fill"></div></div>
-            <p>Menyiapkan Kopi Anda...</p>
+            <p>Preparing Your Coffee...</p>
         </div>
     </div>
     <main class="detail-container">
         <div class="card glass detail-card">
             <div id="coffee-assemble-container" class="hero-img-wrapper">
                 <model-viewer 
-                    src="spanish/spanish.glb" 
+                    src="product/3d/spanish.glb" 
                     alt="3D Coffee Model" 
                     auto-rotate 
                     rotation-per-second="30deg"
@@ -46,6 +47,6 @@
             </div>
         </div>
     </main>
-    <script src="spanish/script.js"></script>
+    <script src="product/script.js"></script>
 </body>
 </html>

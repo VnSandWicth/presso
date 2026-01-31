@@ -3,7 +3,7 @@ document.querySelectorAll('.carousel').forEach(container => {
     
     // 1. Gandakan konten untuk infinity loop
     const originalHTML = track.innerHTML;
-    track.innerHTML = originalHTML.repeat(6); 
+    track.innerHTML = originalHTML.repeat(9); 
 
     let currentPos = 0;
     const isLTR = container.classList.contains('ltr');
@@ -180,4 +180,3 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ... sisa logika navigasi Anda
 });
-

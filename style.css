@@ -165,10 +165,82 @@ body.fade-out {
     align-items: center;
     padding: 30px 60px;  /* Sesuai dengan padding asli Anda */
 }
+
+.journey-section {
+    overflow: hidden;
+    padding: 20px 0;
+    background-color: transparent; /* Atau samakan dengan warna background Anda */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 50px; /* Menyesuaikan jarak agar tidak terlalu kosong */
+}
+
+.marquee {
+    display: flex;
+    width: 100%;
+    user-select: none;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    gap: 40px; /* Jarak antar teks */
+}
+
+.marquee-content span {
+    font-family: "Titan One", sans-serif;
+    font-weight: 900;
+  font-style: italic;
+    font-size: 10rem; /* Ukuran diperbesar agar lebih nampak */
+    color: transparent; /* Baris bawah dibuat transparan/kosong */
+    
+    /* Efek Stroke Luar */
+    -webkit-text-stroke: 12px #dad3d3; 
+    
+    /* Trik agar stroke nimbul ke luar (tidak memakan isi huruf) */
+    paint-order: stroke fill;
+    
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.marquee-bottom .marquee-content span {
+    color: transparent; /* Baris bawah dibuat transparan/kosong */
+    -webkit-text-stroke: 12px #dad3d3;
+}
+
+/* Animasi Kanan ke Kiri */
+.marquee-top .marquee-content {
+    animation: scrollLeft 20s linear infinite;
+}
+
+/* Animasi Kiri ke Kanan */
+.marquee-bottom .marquee-content {
+    animation: scrollRight 20s linear infinite;
+}
+
+@keyframes scrollLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+/* Sesuaikan padding main-content */
+.main-content {
+    padding-top: 60px; /* Dikurangi dari 250px karena sudah ada jarak dari wave */
+    position: relative;
+    z-index: 1;
+}
+
 /* Hero Section: Gelas di Kiri, Teks di Kanan */
 .hero {
     display: flex; align-items: center;
-    padding: 0 300px; height: 500px;
+    padding: 0 300px; height: 800px;
 }
 /* Container untuk dekorasi background */
 .menu-group {
@@ -285,14 +357,14 @@ et.assembled {
 }
 
 .tagline {
-    font-size: 1.9rem; margin-top: 25px; color: #444; font-style: italic;
+    font-size: 1.9rem; margin-top: 25px; color: #a2a2a2; font-style: italic;
 }
 
 
 /* Area Menu dengan Background Gradasi Abu-abu */
 .main-content {
     background: linear-gradient(180deg, #f2ecec04 0%, #e7dfdf 20%, #cbb0b0 100%);
-    padding-top: 90px; padding-bottom: 100px;
+    padding-top: 250px; padding-bottom: 100px;
     min-height: 100vh; 
     display: flex; 
     flex-direction: column;
@@ -565,12 +637,12 @@ et.assembled {
 
 
 
-.rtl .track { animation: scrollRTL 135s linear infinite; }
+.rtl .track { animation: scrollRTL 235s linear infinite; }
 .ltr .track { animation: scrollLTR 135s linear infinite; }
 
 
 /* Responsive Mobile (iPhone/Android) */
-@media (max-width: 768px) {
+@media (max-width: 768px )  {
     .hero { 
         flex-direction: column; 
         height: auto; 
@@ -682,5 +754,4 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
-
 
