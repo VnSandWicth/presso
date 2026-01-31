@@ -41,21 +41,7 @@ body {
 }
 
 
-/* --- CODINGAN WAVE TETAP (TIDAK BERUBAH) --- */
-@keyframes smoothWave {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(2px, -8px) rotate(0.5deg); }
-    66% { transform: translate(-2px, 4px) rotate(-0.5deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
 
-.detail-info h1, .detail-info p {
-    display: block;
-    opacity: 0;
-    animation: 
-        smoothPopUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
-        smoothWave 6s ease-in-out infinite 1.2s;
-}
 /* Navbar persis gambar */
 /* Container utama untuk logo dan teks */
 .logo-container {
@@ -98,7 +84,7 @@ body {
 .detail-info p, 
 .btn-back {
     opacity: 0;
-    animation: smoothPopUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation: smoothPopUp 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .detail-info p { animation-delay: 0.2s; }
@@ -153,7 +139,7 @@ body {
 /* Hapus class .coffee-3d-active karena sekarang sudah otomatis */
 /* Pastikan class 3D active tetap memiliki priority tinggi */
 .coffee-3d-active {
-    animation: floatAndRotate 4s ease-in-out infinite !important;
+    animation: floatAndRotate 1s ease-in-out infinite !important;
     filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.2));
 }
 
@@ -174,6 +160,106 @@ body {
 .coffee-3d-active {
     animation: floatAndRotate 4s ease-in-out infinite !important;
     filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.2)); /* Tambah bayangan agar lebih 3D */
+}
+
+/* Container Utama Loader */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    /* 1. Transisi lebih lambat (1.2 detik) */
+    /* 2. Cubic-bezier memberikan efek 'smooth start & slow stop' */
+    transition: 
+        opacity 2.0s cubic-bezier(0.65, 0, 0.35, 1), 
+        visibility 2.9s, 
+        backdrop-filter 1.2s ease-in-out,
+        transform 1.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Efek tambahan saat menghilang */
+body.page-loaded #loader-wrapper {
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(20px);
+    transform: scale(1.0); /* Memberikan efek seolah-olah kamera maju saat loading selesai */
+}
+.detail-container {
+    opacity: 0;
+    transform: translateY(20px); /* Konten mulai sedikit di bawah */
+    transition: 
+        opacity 1.5s ease-out 2.9s, 
+        transform 9.5s ease-out 19.9s; /* Delay 0.5s agar muncul setelah loader mulai pudar */
+}
+
+body.page-loaded .detail-container {
+    opacity: 1;
+    transform: translateY(0); /* Konten naik perlahan ke posisi asli */
+}
+.loader-content {
+    text-align: center;
+}
+
+/* Animasi Logo Berdenyut */
+.loader-logo {
+    width: 80px;
+    animation: pulse 0.9s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 1.8; }
+    50% { transform: scale(1.05); opacity: 2.0; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Progress Bar Sederhana */
+.progress-bar {
+    width: 200px;
+    height: 4px;
+    background: #eee;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #000;
+    animation: fillProgress 0.9s ease-in-out forwards;
+}
+
+@keyframes fillProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* State awal: Body transparan untuk Fade In */
+body {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    background: linear-gradient(to bottom, #ffffff, #dad3d3);
+    min-height: 100vh;
+}
+
+
+
+/* State saat halaman aktif */
+body.page-loaded {
+    opacity: 1;
+}
+
+/* State saat ingin pindah halaman (Fade Out) */
+body.fade-out {
+    opacity: 0.1;
+    pointer-events: none; /* Cegah klik ganda saat transisi */
 }
 
 /* --- Efek Wave Smooth --- */

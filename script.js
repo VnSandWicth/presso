@@ -58,6 +58,7 @@ document.querySelectorAll('.carousel').forEach(container => {
     const stopDrag = (e) => {
         if (!isDragging) return;
         isDragging = false;
+        
 
         // Ambil posisi akhir kursor/jari
         const endX = e.type.includes('mouse') ? e.pageX : (e.changedTouches ? e.changedTouches[0].pageX : startX);
@@ -170,4 +171,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     */
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // Memberi jeda 2 detik agar user bisa melihat loading sebelum transisi halus dimulai
+    setTimeout(() => { 
+        document.body.classList.add('page-loaded'); 
+    }, 9900); 
+    
+    // ... sisa logika navigasi Anda
 });
