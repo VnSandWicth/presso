@@ -648,25 +648,28 @@ et.assembled {
         height: auto; 
         padding: 40px 20px; /* Menghapus padding 300px yang merusak layout */
         text-align: center; 
-        gap: 20px;
+      
     }
 
     .hero-left, .hero-right {
         flex: none;
         width: 100%;
+        height: auto;
     }
 
     .hero-img-wrapper {
         width: 250px; /* Ukuran container gambar di HP */
-        height: 250px;
+        height: 350px;
         margin: 0 auto;
     }
 
     .hero-right h1 { 
         font-size: 2.8rem; /* Ukuran judul lebih proporsional */
-        line-height: 1.1;
+        line-height: 0.9;
     }
-
+.journey-section {
+    padding-top: 35px;
+}
     .tagline {
         font-size: 1.2rem;
         margin-top: 10px;
