@@ -1,0 +1,259 @@
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; 
+    /* Gradasi dari putih (#ffffff) ke abu-abu terang (#dad3d3) */
+    background: linear-gradient(to bottom, #ffffff 0%, #dad3d3 100%);
+    background-attachment: fixed; /* Agar gradasi tetap diam saat di-scroll */
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+.detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 0px ;
+    padding-right: 200px;
+    gap: 50px;
+}
+.detail-card {
+    max-width: 9000px;
+    display: flex;
+    padding: 50px;
+    gap: 40px;
+}
+.detail-img {
+    width: 550px;
+    border-radius: 0px;
+}
+.detail-info h1 { font-size: 5rem; margin-bottom: 50px; margin-top: 150px ;}
+.detail-info p { font-size: 1.2rem; line-height: 1.6; color: #444; }
+.btn-back {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    background: #000000;
+    color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+
+/* --- CODINGAN WAVE TETAP (TIDAK BERUBAH) --- */
+@keyframes smoothWave {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(2px, -8px) rotate(0.5deg); }
+    66% { transform: translate(-2px, 4px) rotate(-0.5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.detail-info h1, .detail-info p {
+    display: block;
+    opacity: 0;
+    animation: 
+        smoothPopUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+        smoothWave 6s ease-in-out infinite 1.2s;
+}
+/* Navbar persis gambar */
+/* Container utama untuk logo dan teks */
+.logo-container {
+    display: flex;
+    align-items: center; /* Menyejajarkan logo dan teks tepat di tengah secara vertikal */
+    gap: 15px;           /* Memberi jarak horizontal antara logo dan tulisan */
+}
+
+/* Mengatur ukuran logo */
+.merk {
+    height: 50px;        /* Atur tinggi logo agar sesuai dengan ukuran teks navbar */
+    width: auto;         /* Lebar otomatis agar gambar tidak gepeng */
+    object-fit: contain;
+}
+
+/* Mengatur gaya tulisan FOLKPRESSO */
+.logo-text {
+    font-weight: 800;
+    font-size: 2.2rem;   /* Sesuaikan dengan font-size navbar Anda sebelumnya */
+    line-height: 1;
+}
+
+/* Pastikan navbar memberikan ruang yang cukup */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 30px 60px;  /* Sesuai dengan padding asli Anda */
+}
+
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara logo dan teks */
+    cursor: pointer;
+}
+
+/* --- Efek Pop Up Halus saat Masuk --- */
+.detail-info h1, 
+.detail-info p, 
+.btn-back {
+    opacity: 0;
+    animation: smoothPopUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.detail-info p { animation-delay: 0.2s; }
+.btn-back { animation-delay: 0.4s; }
+
+@keyframes smoothPopUp {
+    0% { transform: scale(0.8) translateY(30px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Gabungkan animasi Pop Up dan Rotate */
+@keyframes popAndRotate {
+    0% { 
+        transform: scale(0.5) translateY(50px) rotateY(0deg); 
+        opacity: 0; 
+    }
+    /* Pada detik ke-0.8 (selesai pop up), gambar sudah tegak */
+    20% { 
+        transform: scale(1) translateY(0) rotateY(0deg); 
+        opacity: 1; 
+    }
+    /* Sisa durasi digunakan untuk rotasi terus menerus */
+    100% { 
+        transform: scale(1) translateY(0) rotateY(360deg); 
+        opacity: 1; 
+    }
+}
+
+.detail-img {
+    width: 550px;
+    height: 600px; /* Sesuaikan tinggi agar model tidak terpotong */
+    border-radius: 0px;
+    transform-style: preserve-3d;
+    /* Kita matikan animasi popAndRotate agar tidak bentrok dengan auto-rotate model-viewer */
+    animation: none !important; 
+    opacity: 0; /* Mulai dari transparan untuk kebutuhan script.js */
+}
+
+.model-viewer {
+    outline: none;
+    --poster-color: transparent;
+}
+
+/* Pastikan container tetap memiliki perspektif */
+.hero-img-wrapper {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hapus class .coffee-3d-active karena sekarang sudah otomatis */
+/* Pastikan class 3D active tetap memiliki priority tinggi */
+.coffee-3d-active {
+    animation: floatAndRotate 4s ease-in-out infinite !important;
+    filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.2));
+}
+
+/* Animasi Rotasi 3D (Berjalan terus menerus) */
+@keyframes floatAndRotate {
+    0% {
+        transform: rotateY(0deg) translateY(0px);
+    }
+    50% {
+        transform: rotateY(15deg) translateY(-10px); /* Miring sedikit ke samping */
+    }
+    100% {
+        transform: rotateY(0deg) translateY(0px);
+    }
+}
+
+/* Class yang dipicu setelah partikel selesai */
+.coffee-3d-active {
+    animation: floatAndRotate 4s ease-in-out infinite !important;
+    filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.2)); /* Tambah bayangan agar lebih 3D */
+}
+
+/* --- Efek Wave Smooth --- */
+@keyframes smoothWave {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(2px, -8px) rotate(0.5deg); /* Naik dan sedikit geser */
+    }
+    66% {
+        transform: translate(-2px, 4px) rotate(-0.5deg); /* Turun dan sedikit geser */
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* Terapkan pada elemen teks */
+.detail-info h1, 
+.detail-info p {
+    display: block;
+    opacity: 0;
+    /* Animasi 1: Pop up saat masuk */
+    /* Animasi 2: Wave yang sangat halus dan lambat */
+    animation: 
+        smoothPopUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+        smoothWave 6s ease-in-out infinite 1.2s; /* Durasi 6 detik agar sangat tenang */
+}
+
+/* Variasi delay agar h1 dan p tidak bergerak bersamaan (efek riak) */
+.detail-info p {
+    animation-delay: 0.3s, 1.5s; 
+}
+
+/* Opsional: Membuat tiap baris sedikit berbeda kecepatannya */
+.detail-info p strong {
+    display: inline-block;
+    animation: smoothWave 5s ease-in-out infinite 1.8s;
+}
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .detail-container { 
+        flex-direction: column; 
+        padding: 10px;        /* Perkecil padding dari 20px */
+        min-height: auto;     /* Ubah dari 100vh agar tidak memaksakan ruang kosong */
+        padding-right: 0;     /* Pastikan tidak ada offset ke kanan */
+        margin-top: 20px;     /* Memberi jarak tipis dari navbar */
+    }
+    .detail-card { 
+        flex-direction: column; 
+        padding: 20px;        /* Perkecil padding dalam kartu */
+        gap: 20px;            /* Kurangi jarak antara gambar dan teks */
+        text-align: center; 
+    }
+    .hero-img-wrapper {
+        width: 100%;
+        height: 400px;        /* Berikan tinggi yang pasti agar tidak terlalu memanjang */
+    }
+    .detail-img { width: 90%; }
+    .detail-info h1 { 
+        font-size: 2.5rem;    /* Perkecil judul di mobile */
+        margin-top: 15px; 
+        margin-bottom: 10px;
+    }
+
+    .detail-info p { 
+        font-size: 1rem; 
+        line-height: 1.4; 
+    }
+    .navbar { 
+        padding: 15px 20px;
+     }
+    .logo-wrapper { 
+        gap: 10px;
+     }
+    .logo-text {
+         font-size: 1.4rem; 
+        } /* Kecilkan teks di mobile */
+    .merk {
+        width: 40px; 
+    } /* Kecilkan logo di mobile */
+}

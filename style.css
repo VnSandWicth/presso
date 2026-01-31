@@ -463,18 +463,56 @@ et.assembled {
 
 /* Responsive Mobile (iPhone/Android) */
 @media (max-width: 768px) {
-    .hero { flex-direction: column; height: auto; padding: 40px 20px; text-align: center; }
-    .hero-right h1 { font-size: 3.8rem;  }
-    .hero-img { width: 220px; margin-bottom: 30px; }
-    .card { width: 240px; height: 320px; }
-    .category-title { padding-left: 20px; font-size: 1.8rem; text-align: center; }
+    .hero { 
+        flex-direction: column; 
+        height: auto; 
+        padding: 40px 20px; /* Menghapus padding 300px yang merusak layout */
+        text-align: center; 
+        gap: 20px;
+    }
+
+    .hero-left, .hero-right {
+        flex: none;
+        width: 100%;
+    }
+
+    .hero-img-wrapper {
+        width: 250px; /* Ukuran container gambar di HP */
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .hero-right h1 { 
+        font-size: 2.8rem; /* Ukuran judul lebih proporsional */
+        line-height: 1.1;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+    .card { 
+        width: 240px; 
+        height: 340px; 
+        padding: 15px;
+    }
+    
+    .category-title { 
+        padding-left: 0; 
+        font-size: 1.8rem; 
+        text-align: center; 
+        margin: 20px 0;
+    }
     .folkpresso-footer { padding: 30px 15px; } 
     .footer-inner p { font-size: 13px; } 
     .ig-link img { width: 22px; height: 22px; } 
-    .navbar { padding: 15px 20px; /* Padding lebih kecil di HP */}
+    .navbar { 
+        padding: 15px 20px; 
+        justify-content: center; /* Pusatkan logo di mobile */
+    }
     .logo-wrapper { gap: 10px; /* Jarak lebih rapat di HP */ }
-    .merk { width: 40px; /* Logo mengecil di HP agar tidak memenuhi layar */ }
-    .logo-text { font-size: 1.4rem; /* Teks mengecil agar tidak pecah/turun ke bawah */ }
+    .merk { height: 35px; }
+    .logo-text { font-size: 1.5rem; }
     
 /* Perbaikan Hero Section agar gambar tidak menutupi teks */
     .hero {
@@ -486,9 +524,54 @@ et.assembled {
     .hero-img {
         width: 220px; /* Ukuran gambar kopi mengecil di HP */
     }
-    .floating-bg-cup {
-        width: 280px;
-        left: 10%;
-    }
+   /* Mencegah konten memotong elemen di dalamnya secara paksa */
+   .menu-group {
+    overflow: visible; 
+}
+
+/* Pastikan main-content tidak membuat scroll horizontal tapi mengizinkan elemen meluap sedikit */
+.main-content {
+    overflow-x: hidden; 
+    padding-top: 40px;
+}
+
+/* Pengaturan umum untuk semua background melayang di Mobile */
+.floating-bg-cup, 
+.floating-bg-cup1, 
+.floating-bg-cup2 {
+    width: 150px;       /* Perkecil ukuran container di mobile */
+    opacity: 0.4;       /* Sedikit lebih jelas agar terlihat */
+    z-index: 1;         /* Pastikan di bawah kartu tapi di atas background */
+    filter: blur(2px);  /* Tambahkan sedikit blur agar menyatu */
+}
+
+/* Posisikan ulang agar tidak terlalu jauh ke luar layar (biar tidak terpotong) */
+.floating-bg-cup {
+    top: -20px;
+    right: 65px;         /* Dekatkan ke area layar terlihat */
+    left: auto;
+}
+
+.floating-bg-cup1 {
+    top: -30px;
+    left: -250px;          /* Dekatkan ke area layar terlihat */
+}
+
+.floating-bg-cup2 {
+    top: -30px;
+    left: -250px;  
+}
+
+/* Perbaikan Gambar di dalamnya agar tidak meluap 300% */
+.floating-bg-cup img,
+.floating-bg-cup1 img,
+.floating-bg-cup2 img {
+    width: 300%;        /* Sesuaikan skala agar tidak terlalu besar di layar kecil */
+    height: auto;
+    transform: rotate(15deg); /* Berikan rotasi standar */
+}
+
+    /* 5. Footer */
+    .folkpresso-footer { padding: 30px 15px; }
 }
 
