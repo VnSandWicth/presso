@@ -167,13 +167,15 @@ body.fade-out {
 }
 
 .journey-section {
-    overflow: hidden;
+    overflow: hidden; /* Mengunci agar teks yang meluap tidak merusak layar */
     padding: 20px 0;
-    background-color: transparent; /* Atau samakan dengan warna background Anda */
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 50px; /* Menyesuaikan jarak agar tidak terlalu kosong */
+    position: relative; /* Wajib relative agar mengikuti urutan konten */
+    width: 100%;
+    margin-top: 100px; /* Memberikan jarak agar tidak langsung terlihat di awal */
+    z-index: 1;
 }
 
 .marquee {
@@ -189,25 +191,22 @@ body.fade-out {
 }
 
 .marquee-content span {
-    font-family: "Titan One", sans-serif;
+    display: inline-block;
+    font-family: "Anton", sans-serif;
+    font-size: 11vw; /* Ukuran dinamis agar meluap sedikit keluar layar secara clean */
     font-weight: 900;
-  font-style: italic;
-    font-size: 10rem; /* Ukuran diperbesar agar lebih nampak */
-    color: transparent; /* Baris bawah dibuat transparan/kosong */
-    
-    /* Efek Stroke Luar */
-    -webkit-text-stroke: 12px #dad3d3; 
-    
-    /* Trik agar stroke nimbul ke luar (tidak memakan isi huruf) */
-    paint-order: stroke fill;
-    
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 15px #e6d2d2;
+    white-space: nowrap;
+    line-height: 1;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .marquee-bottom .marquee-content span {
     color: transparent; /* Baris bawah dibuat transparan/kosong */
-    -webkit-text-stroke: 12px #dad3d3;
+    -webkit-text-stroke: 15px #e6d2d2;
 }
 
 /* Animasi Kanan ke Kiri */
@@ -642,13 +641,23 @@ et.assembled {
 
 
 /* Responsive Mobile (iPhone/Android) */
+@media screen and (max-width: 1024px) {
+    /* Tablet & iPad */
+    .hero {
+        min-height: 90vh; /* Memastikan Hero memenuhi layar tablet */
+    }
+    .journey-section {
+        margin-top: 50px !important;
+    }
+}
+
 @media (max-width: 768px )  {
-    .hero { 
-        flex-direction: column; 
-        height: auto; 
-        padding: 40px 20px; /* Menghapus padding 300px yang merusak layout */
-        text-align: center; 
-      
+    .hero {
+        flex-direction: column !important;
+        height: 10vh !important; /* Memenuhi tinggi layar HP */
+        min-height: 600px;
+        padding: 100px 20px 40px 20px !important;
+        justify-content: center;
     }
 
     .hero-left, .hero-right {
@@ -658,18 +667,33 @@ et.assembled {
     }
 
     .hero-img-wrapper {
-        width: 250px; /* Ukuran container gambar di HP */
-        height: 350px;
-        margin: 0 auto;
+        width: 250px !important;
+        height: 250px !important;
+        margin: 0 auto !important;
+    }
+    .hero-right h1 {
+        font-size: 2.8rem !important;
+        margin-top: 20px;
     }
 
-    .hero-right h1 { 
-        font-size: 2.8rem; /* Ukuran judul lebih proporsional */
-        line-height: 0.9;
+    .journey-section {
+        position: relative !important;
+        margin-top: 250px !important;
+        margin-bottom: 150px;
+        padding-top: 0 !important;
     }
-.journey-section {
-    padding-top: 35px;
-}
+
+    .marquee-content span {
+        font-size: 20vw !important;
+        /* Stroke sangat tipis untuk mobile agar terlihat 'Clean' */
+        -webkit-text-stroke: 7.5px #e6d2d2 !important; 
+    }
+
+    /* Mencegah layar goyang karena teks meluap */
+    body, .main-content {
+        overflow-x: hidden !important;
+    }
+
     .tagline {
         font-size: 1.2rem;
         margin-top: 10px;
@@ -680,12 +704,11 @@ et.assembled {
         padding: 15px;
     }
     
-    .category-title { 
-        padding-left: 0; 
-        font-size: 1.8rem; 
-        text-align: center; 
-        margin: 20px 0;
+    .category-title {
+        margin: 20px 0 !important;
+        padding-left: 20px !important;
     }
+    
     .folkpresso-footer { padding: 30px 15px; } 
     .footer-inner p { font-size: 13px; } 
     .ig-link img { width: 22px; height: 22px; } 
@@ -714,9 +737,9 @@ et.assembled {
 
 /* Pastikan main-content tidak membuat scroll horizontal tapi mengizinkan elemen meluap sedikit */
 .main-content {
-    overflow-x: hidden; 
-    padding-top: 40px;
-}
+        padding-top: 20px !important;
+        overflow-x: hidden !important; /* Mencegah layar goyang kanan-kiri */
+    }
 
 /* Pengaturan umum untuk semua background melayang di Mobile */
 .floating-bg-cup, 
