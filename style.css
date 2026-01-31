@@ -90,6 +90,53 @@ body.fade-out {
     display: flex; align-items: center;
     padding: 0 300px; height: 500px;
 }
+/* Container untuk dekorasi background */
+.menu-group {
+    position: relative; /* Penting agar deco bisa diposisikan absolute terhadap section ini */
+    overflow: visible; 
+}
+
+.bg-deco {
+    position: absolute;
+    z-index: 0; /* Di bawah teks dan kartu */
+    pointer-events: none; /* Agar tidak bisa diklik/mengganggu drag carousel */
+    opacity: 0.15; /* Dibuat samar agar elegan */
+    filter: blur(2px); /* Efek bokeh sedikit */
+    transition: transform 0.8s ease;
+}
+
+.bg-deco img {
+    width: 100%;
+    height: auto;
+}
+
+/* Posisi spesifik untuk tiap gambar */
+.deco-1 {
+    width: 450px;
+    top: -50px;
+    left: -100px;
+    transform: rotate(-15deg);
+}
+
+.deco-2 {
+    width: 400px;
+    bottom: 50px;
+    right: -50px;
+    transform: rotate(20deg);
+}
+
+.deco-3 {
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(5deg);
+    opacity: 0.1; /* Sedikit lebih samar karena posisinya di tengah */
+}
+
+/* Efek interaktif: saat section di-hover, gambar sedikit bergerak */
+.menu-group:hover .bg-deco {
+    transform: scale(1.05) rotate(0deg);
+}
 
 et.assembled {
     opacity: 1;
@@ -234,9 +281,142 @@ et.assembled {
 }
 
 .card:hover .overlay { 
-    opacity: 1; /* muncul saat hover */ 
+    opacity: 0; /* muncul saat hover */ 
+}
+/* Container Carousel harus relatif agar gambar tidak lari ke luar */
+.carousel {
+    position: relative;
+    overflow: hidden;
 }
 
+/* Styling Gambar Melayang */
+.floating-bg-cup {
+    position: absolute;
+    top:-40%;
+    left: 70%; /* Posisi sedikit ke kiri dari tengah */
+    width: 250px; /* Ukuran besar di belakang kartu */
+    z-index: 0; /* Di belakang .track (kartu) */
+    opacity: 0.5; /* Transparansi agar elegan */
+    pointer-events: none; /* WAJIB: agar tidak merusak script swipe */
+    filter: blur(1px); /* Memberikan efek depth of field (fokus hanya pada kartu) */
+    transition: all 1.0s ease-in-out;
+}
+
+.floating-bg-cup img {
+    width: 300%;
+    height: auto;
+    display: block;
+    transform: rotate(-19deg); /* Kemiringan estetik */
+}
+
+/* Pastikan Track (wadah kartu) berada di atas gambar */
+.track {
+    position: relative;
+    z-index: 3; /* Di atas gambar cup */
+}
+
+/* Variasi posisi untuk section kedua agar tidak monoton */
+.ltr .floating-bg-cup {
+    left: auto;
+    right: 15%;
+}
+
+.ltr .floating-bg-cup img {
+    transform: rotate(15deg);
+}
+
+/* Efek saat user melakukan hover pada area menu */
+.menu-group:hover .floating-bg-cup {
+    opacity: 0.4;
+    filter: blur(0px); /* Menjadi sedikit lebih tajam saat dilihat */
+    
+}
+
+/* Styling Gambar Melayang 1*/
+.floating-bg-cup1 {
+    position: absolute;
+    top:-10%;
+    left: -25%; /* Posisi sedikit ke kiri dari tengah */
+    width: 350px; /* Ukuran besar di belakang kartu */
+    z-index: 0; /* Di belakang .track (kartu) */
+    opacity: 0.5; /* Transparansi agar elegan */
+    pointer-events: none; /* WAJIB: agar tidak merusak script swipe */
+    filter: blur(1px); /* Memberikan efek depth of field (fokus hanya pada kartu) */
+    transition: all 1.0s ease-in-out;
+}
+
+.floating-bg-cup1 img {
+    width: 300%;
+    height: auto;
+    display: block;
+    transform: rotate(10deg); /* Kemiringan estetik */
+}
+
+/* Pastikan Track (wadah kartu) berada di atas gambar */
+.track {
+    position: relative;
+    z-index: 3; /* Di atas gambar cup */
+}
+
+/* Variasi posisi untuk section kedua agar tidak monoton */
+.ltr .floating-bg-cup {
+    left: auto;
+    right: 15%;
+}
+
+.ltr .floating-bg-cup1 img {
+    transform: rotate(15deg);
+}
+
+/* Efek saat user melakukan hover pada area menu */
+.menu-group:hover .floating-bg-cup1 {
+    opacity: 0.4;
+    filter: blur(0px); /* Menjadi sedikit lebih tajam saat dilihat */
+}
+
+/* Styling Gambar Melayang 1*/
+.floating-bg-cup2 {
+    position: absolute;
+    top:-50%;
+    left: -25%; /* Posisi sedikit ke kiri dari tengah */
+    width: 350px; /* Ukuran besar di belakang kartu */
+    z-index: 0; /* Di belakang .track (kartu) */
+    opacity: 0.5; /* Transparansi agar elegan */
+    pointer-events: none; /* WAJIB: agar tidak merusak script swipe */
+    filter: blur(1px); /* Memberikan efek depth of field (fokus hanya pada kartu) */
+    transition: all 1.0s ease-in-out;
+}
+
+.floating-bg-cup2 img {
+    width: 300%;
+    height: auto;
+    display: block;
+    transform: rotate(19deg); /* Kemiringan estetik */
+}
+
+/* Pastikan Track (wadah kartu) berada di atas gambar */
+.track {
+    position: relative;
+    z-index: 3; /* Di atas gambar cup */
+}
+
+/* Variasi posisi untuk section kedua agar tidak monoton */
+.ltr .floating-bg-cup {
+    left: auto;
+    right: 15%;
+}
+
+.ltr .floating-bg-cup2 img {
+    transform: rotate(15deg);
+}
+
+/* Efek saat user melakukan hover pada area menu */
+.menu-group:hover .floating-bg-cup2 {
+    opacity: 0.4;
+    filter: blur(0px); /* Menjadi sedikit lebih tajam saat dilihat */
+}
+
+   
 /* Animasi Loop */
 /* Hapus atau komentari bagian animasi CSS sebelumnya */
 /* .rtl .track { animation: scrollRTL 35s linear infinite; } */
@@ -306,9 +486,9 @@ et.assembled {
     .hero-img {
         width: 220px; /* Ukuran gambar kopi mengecil di HP */
     }
+    .floating-bg-cup {
+        width: 280px;
+        left: 10%;
+    }
 }
 
-
-
-
-   

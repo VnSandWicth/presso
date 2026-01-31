@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cappuccino - Folkpresso</title>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="Aren Coffee/style.css" >
 </head>
 <body>
@@ -14,16 +15,26 @@
         </div>
     </nav>
 
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
     <main class="detail-container">
         <div class="card glass detail-card">
             <div id="coffee-assemble-container" class="hero-img-wrapper">
-                <img src="https://png.pngtree.com/png-clipart/20250104/original/pngtree-coffee-ice-drink-soft-with-milk-plastic-cup-png-image_19780577.png" 
-                     alt="Cappuccino" 
-                     class="detail-img hero-img-target"> </div>
+                <model-viewer 
+                    src="Aren Coffee/gula aren.glb" 
+                    alt="3D Coffee Model" 
+                    auto-rotate 
+                    rotation-per-second="30deg"
+                    camera-controls 
+                    disable-zoom
+                    shadow-intensity="1" 
+                    class="detail-img hero-img-target">
+                </model-viewer>
             </div>
+            
             <div class="detail-info">
-                <h1>Cappuccino</h1>
-                <p>Campuran sempurna antara espresso yang kaya, susu panas, dan busa susu yang lembut. Cappuccino kami dibuat dengan biji kopi pilihan untuk memberikan rasa yang seimbang antara pahit dan manis alami susu.</p>
+                <h1>Aren Coffee</h1>
+                <p>Campuran sempurna antara espresso yang kaya, susu panas, dan busa susu yang lembut.</p>
                 <p><strong>Komposisi:</strong> Espresso, Steamed Milk, Milk Foam.</p>
                 <a href="index.html" class="btn-back"> Home</a>
             </div>

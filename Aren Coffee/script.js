@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('coffee-assemble-container');
     const targetImg = document.querySelector('.hero-img-target');
-    
     if (!container || !targetImg) return;
 
     const particleCount = 12;
@@ -23,16 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.appendChild(particle);
 
-        requestAnimationFrame(() => {
-            setTimeout(() => {
-                particle.style.opacity = '0.6';
-                particle.style.transform = `translate(0, 0) scale(1)`;
-                particle.style.filter = 'blur(2px)';
-            }, i * 30);
-        });
+        setTimeout(() => {
+            const particles = document.querySelectorAll('.coffee-particle');
+            particles.forEach(p => {
+                p.style.opacity = '0';
+                p.style.transform = 'scale(1.5)';
+                p.style.filter = 'blur(20px)';
+            });
+        }, 1100);
     }
 
     // --- BAGIAN KRUSIAL PERBAIKAN ---
+    
     setTimeout(() => {
         // 1. Hapus SEMUA inline style agar animasi CSS bisa jalan
         targetImg.style.transform = ''; 
@@ -68,10 +69,21 @@ setTimeout(() => {
     targetImg.style.opacity = '1';
     targetImg.classList.add('coffee-3d-active');
 
-    // Pastikan partikel dibersihkan agar tidak menutupi teks yang bergoyang
+   // Cari blok setTimeout terakhir (1200ms) di script.js kamu, ganti menjadi:
+setTimeout(() => {
+    // 1. Munculkan model 3D dengan halus
+    targetImg.style.opacity = '1';
+    targetImg.style.transition = 'opacity 1s ease';
+
+    // 2. Hilangkan partikel agar tidak menutupi model
     const particles = document.querySelectorAll('.coffee-particle');
     particles.forEach(p => {
-        p.style.pointerEvents = 'none'; // Tambahan agar tidak menghalangi klik pada teks
+        p.style.pointerEvents = 'none';
         p.style.opacity = '0';
     });
+    
+    // 3. Tambahkan class 3D active jika kamu masih butuh efek bayangan tambahan
+    targetImg.classList.add('coffee-3d-active');
 }, 1200);
+}
+)
