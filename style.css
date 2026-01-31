@@ -698,7 +698,7 @@ et.assembled {
         /* Stroke sangat tipis untuk mobile agar terlihat 'Clean' */
         -webkit-text-stroke: 7.5px #e6d2d2 !important; 
         letter-spacing: 10px;
-        ffont-family: "Titan One", sans-serif, cursive !important;
+        font-family: "Titan One", sans-serif, cursive !important;
         
     }
 
@@ -793,4 +793,5 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
+
 
