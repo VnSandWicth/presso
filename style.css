@@ -694,9 +694,19 @@ et.assembled {
     }
 
     .marquee-content span {
-        font-size: 25vw !important;
-        /* Stroke sangat tipis untuk mobile agar terlihat 'Clean' */
-        -webkit-text-stroke: 3px #e6d2d2 !important; 
+        font-size: 25vw !important;-webkit-text-stroke: 0.8px #dad3d3 !important; /* Stroke sangat tipis */
+        
+        /* Line height dirapatkan khusus mobile */
+        line-height: 1.1 !important; 
+        
+        /* Shadow 3D yang sangat tipis agar tidak kotor di HP */
+        text-shadow: 
+            0.5px 0.5px 0px #d1d1d1,
+            1px 1px 0px #c1c1c1,
+            2px 2px 4px rgba(0,0,0,0.1) !important;
+        
+        padding: 5px 10px !important;
+    }
         letter-spacing: 10px;
         font-family: "Titan One", sans-serif, cursive !important;
         
@@ -793,6 +803,7 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
+
 
 
 
