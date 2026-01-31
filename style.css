@@ -565,8 +565,8 @@ et.assembled {
 
 
 
-.rtl .track { animation: scrollRTL 35s linear infinite; }
-.ltr .track { animation: scrollLTR 35s linear infinite; }
+.rtl .track { animation: scrollRTL 135s linear infinite; }
+.ltr .track { animation: scrollLTR 135s linear infinite; }
 
 
 /* Responsive Mobile (iPhone/Android) */
@@ -682,4 +682,5 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
+
 
