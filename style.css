@@ -687,7 +687,7 @@ et.assembled {
         font-size: 20vw !important;
         /* Stroke sangat tipis untuk mobile agar terlihat 'Clean' */
         -webkit-text-stroke: 5.5px #e6d2d2 !important; 
-         letter-spacing: 10px;
+         letter-spacing: 25px;
     }
 
     /* Mencegah layar goyang karena teks meluap */
@@ -781,6 +781,7 @@ et.assembled {
     /* 5. Footer */
     .folkpresso-footer { padding: 30px 15px; }
 }
+
 
 
 
