@@ -216,28 +216,46 @@ body {
 }
 /* Responsive Mobile */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
     .detail-container { 
         flex-direction: column; 
-        padding: 10px;        /* Perkecil padding dari 20px */
-        min-height: auto;     /* Ubah dari 100vh agar tidak memaksakan ruang kosong */
-        padding-right: 0;     /* Pastikan tidak ada offset ke kanan */
-        margin-top: 20px;     /* Memberi jarak tipis dari navbar */
+        padding: 20px 15px;    /* Gunakan padding yang seimbang kiri-kanan */
+        min-height: 100vh;     /* Pastikan tetap mengisi layar tapi tidak meluap */
+        padding-right: 0;      /* Hapus padding-right 200px dari desktop */
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
     }
+
     .detail-card { 
         flex-direction: column; 
-        padding: 20px;        /* Perkecil padding dalam kartu */
-        gap: 20px;            /* Kurangi jarak antara gambar dan teks */
+        padding: 10px;         
+        gap: 10px;            
         text-align: center; 
+        max-width: 100%;       /* UBAH dari 9000px ke 100% */
+        width: 100%;
+        box-sizing: border-box;
     }
+
     .hero-img-wrapper {
         width: 100%;
-        height: 400px;        /* Berikan tinggi yang pasti agar tidak terlalu memanjang */
+        height: 350px;         /* Batasi tinggi agar tidak terlalu panjang ke bawah */
+        overflow: hidden;      /* Mencegah partikel keluar dari area container */
     }
-    .detail-img { width: 90%; }
+
+    .detail-img { 
+        width: 100%;           /* Pastikan model viewer memenuhi container */
+        height: 100% !important; 
+    }
+
     .detail-info h1 { 
-        font-size: 2.5rem;    /* Perkecil judul di mobile */
-        margin-top: 15px; 
-        margin-bottom: 10px;
+        font-size: 2.2rem;     /* Sedikit lebih kecil agar tidak pecah baris */
+        margin-top: 10px; 
     }
 
     .detail-info p { 
