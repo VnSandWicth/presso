@@ -176,8 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Memberi jeda 2 detik agar user bisa melihat loading sebelum transisi halus dimulai
     setTimeout(() => { 
         document.body.classList.add('page-loaded'); 
-    }, 1800); 
+    }, 1000); 
     
     // ... sisa logika navigasi Anda
 });
+
 
