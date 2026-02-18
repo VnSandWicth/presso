@@ -224,8 +224,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(`User response: ${outcome}`);
                 deferredPrompt = null;
             } else {
-                // Kalo misal prompt-nya belom ready, kita kasih tau aja bang
-                alert('Tunggu sebentar ya bang biar browser-nya siap, atau cek menu browser buat "Instal Aplikasi"! 🚀');
+                // Kalo misal prompt-nya belom ready, kita kasih loading palsu dikit biar pro
+                androidBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyiapkan...';
+                setTimeout(() => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                    } else {
+                        androidBtn.innerHTML = '<i class="fa-brands fa-android"></i> DOWNLOAD FOR ANDROID';
+                        alert('Waduh, browser abang belum siap manggil instalasi. Coba refresh webnya sekali lagi ya bang! 🙏');
+                    }
+                }, 2000);
             }
         });
     }

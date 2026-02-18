@@ -1,13 +1,13 @@
-const CACHE_NAME = 'folkpresso-app-v4';
+const CACHE_NAME = 'folkpresso-app-v5';
 const ASSETS = [
     '/',
     'index.html',
     'style.css',
     'script.js',
     'f-app.json',
-    'img/logo.png',
+    'img/logo-white.png',
     '/app',
-    '/app/index.html'
+    '/app/'
 ];
 
 self.addEventListener('install', (event) => {
