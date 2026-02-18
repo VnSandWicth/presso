@@ -1,8 +1,10 @@
-const CACHE_NAME = 'folkpresso-landing-v1';
+const CACHE_NAME = 'folkpresso-landing-v2';
 const ASSETS = [
+    '/',
     'index.html',
     'style.css',
     'script.js',
+    'manifest.json',
     'img/logo.png'
 ];
 

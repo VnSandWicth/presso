@@ -192,13 +192,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Handle PWA Install Prompt
+    // --- PWA AUTO-REDIRECT (Ensure installed app shows the App content, not the Web) ---
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+            window.location.href = '/app';
+        }
+    }
+
     let deferredPrompt;
-    const pwaBtn = document.getElementById('pwa-install-btn');
 
     window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
         e.preventDefault();
+        // Stash the event so it can be triggered later.
         deferredPrompt = e;
-        if (pwaBtn) pwaBtn.style.display = 'flex';
+        console.log('beforeinstallprompt event captured');
     });
 
 
@@ -206,20 +214,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const androidBtn = document.getElementById('android-dl-btn');
     const iphoneBtn = document.getElementById('iphone-dl-btn');
 
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
     // Handle Android Button
     if (androidBtn) {
         androidBtn.addEventListener('click', async () => {
-            // PWA Logic within Android button
             if (deferredPrompt) {
-                // Give a small delay so the APK download can start first
-                setTimeout(async () => {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    console.log(`User response to the install prompt: ${outcome}`);
-                    deferredPrompt = null;
-                }, 1500);
+                // Show the install prompt IMMEDIATELY bang! 🚀
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response: ${outcome}`);
+                deferredPrompt = null;
+            } else {
+                // Kalo misal prompt-nya belom ready, kita arahin ke /app biar dia nyoba disana
+                window.location.href = '/app';
             }
         });
     }

@@ -13,7 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json?v=1.1">
     <meta name="theme-color" content="#1f1f1f">
     <link rel="apple-touch-icon" href="img/logo.png">
 </head>
@@ -198,14 +198,13 @@
 
             <div class="download-buttons">
                 <!-- ANDROID BUTTON (APK + PWA PROMPT) -->
-                <a href="https://folkpresso-apk.vercel.app/" target="_blank" id="android-dl-btn"
-                    class="dl-btn dl-android">
+                <button id="android-dl-btn" class="dl-btn dl-android">
                     <span class="dl-icon"><i class="fa-brands fa-android"></i></span>
                     <div class="dl-text">
                         <small>Get it for</small>
-                        <strong>Android APK</strong>
+                        <strong>Android (PWA)</strong>
                     </div>
-                </a>
+                </button>
 
                 <!-- IPHONE BUTTON (PWA MODAL) -->
                 <button id="iphone-dl-btn" class="dl-btn dl-iphone">
@@ -232,7 +231,7 @@
 
     </footer>
 
-    <!-- iOS Install Instruction Modal -->
+    <!-- iOS Install Instruction Modal (Balik lagi bang biar ga pindah domain) -->
     <div id="ios-modal" class="ios-modal-overlay hidden">
         <div class="ios-modal-content animate-pop">
             <button class="ios-close" onclick="closeIosModal()">&times;</button>
