@@ -2,6 +2,10 @@
     "rewrites": [
         {
             "source": "/app",
+            "destination": "https://folkpresso-apk.vercel.app"
+        },
+        {
+            "source": "/app/",
             "destination": "https://folkpresso-apk.vercel.app/"
         },
         {
