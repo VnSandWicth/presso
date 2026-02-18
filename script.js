@@ -1,19 +1,19 @@
 document.querySelectorAll('.carousel').forEach(container => {
     const track = container.querySelector('.track');
-    
+
     // 1. Gandakan konten untuk infinity loop
     const originalHTML = track.innerHTML;
-    track.innerHTML = originalHTML.repeat(9); 
+    track.innerHTML = originalHTML.repeat(9);
 
     let currentPos = 0;
     const isLTR = container.classList.contains('ltr');
     let direction = isLTR ? 1 : -1;
-    let speed = 0.5 * direction; 
-    
+    let speed = 0.5 * direction;
+
     let isDragging = false;
     let startX = 0;
     let lastTranslate = 0;
-    
+
     // Variabel untuk membedakan klik vs swipe
     let clickStartX = 0;
     let clickStartY = 0;
@@ -21,7 +21,7 @@ document.querySelectorAll('.carousel').forEach(container => {
     function animate() {
         if (!isDragging) {
             currentPos += speed;
-            const trackWidth = track.scrollWidth / 6; 
+            const trackWidth = track.scrollWidth / 6;
 
             if (isLTR) {
                 if (currentPos >= 0) currentPos = -trackWidth;
@@ -35,12 +35,12 @@ document.querySelectorAll('.carousel').forEach(container => {
 
     const startDrag = (e) => {
         isDragging = true;
-        
+
         // Simpan posisi awal kursor/jari
         clickStartX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         clickStartY = e.type.includes('mouse') ? e.pageY : e.touches[0].pageY;
         startX = clickStartX;
-        
+
         const style = window.getComputedStyle(track);
         const matrix = new WebKitCSSMatrix(style.transform);
         lastTranslate = matrix.m41;
@@ -58,12 +58,12 @@ document.querySelectorAll('.carousel').forEach(container => {
     const stopDrag = (e) => {
         if (!isDragging) return;
         isDragging = false;
-        
+
 
         // Ambil posisi akhir kursor/jari
         const endX = e.type.includes('mouse') ? e.pageX : (e.changedTouches ? e.changedTouches[0].pageX : startX);
         const endY = e.type.includes('mouse') ? e.pageY : (e.changedTouches ? e.changedTouches[0].pageY : clickStartY);
-        
+
         // Hitung jarak pergerakan
         const distanceX = Math.abs(endX - clickStartX);
         const distanceY = Math.abs(endY - clickStartY);
@@ -99,7 +99,7 @@ document.querySelectorAll('.carousel').forEach(container => {
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('coffee-assemble-container');
     const targetImg = document.querySelector('.hero-img-target');
-    
+
     if (!container || !targetImg) return;
 
     const particleCount = 12; // Jumlah lebih sedikit tapi ukuran lebih besar untuk kesan smooth
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const distance = 400 + Math.random() * 200;
         const startX = Math.cos(angle) * distance;
         const startY = Math.sin(angle) * distance;
-        
+
         // Random blur agar tidak terlihat berpiksel
         const randomBlur = 10 + Math.random() * 20;
 
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Penyatuan akhir ke gambar yang tajam
     setTimeout(() => {
         targetImg.classList.add('assembled');
-        
+
         const particles = document.querySelectorAll('.coffee-particle');
         particles.forEach(p => {
             p.style.opacity = '0';
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 10);
 
     // 2. Fungsi Global untuk pindah halaman dengan Fade Out
-    window.navigateTo = function(url) {
+    window.navigateTo = function (url) {
         document.body.classList.add('fade-out');
         setTimeout(() => {
             window.location.href = url;
@@ -174,9 +174,84 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 document.addEventListener('DOMContentLoaded', () => {
     // Memberi jeda 2 detik agar user bisa melihat loading sebelum transisi halus dimulai
-    setTimeout(() => { 
-        document.body.classList.add('page-loaded'); 
-    }, 1000); 
-    
-    // ... sisa logika navigasi Anda
+    setTimeout(() => {
+        document.body.classList.add('page-loaded');
+    }, 1000);
+
+    // ==========================================
+    // PWA & SERVICE WORKER LOGIC
+    // ==========================================
+
+    // 1. Register Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('SW Registered!', reg))
+                .catch(err => console.log('SW Registration Failed', err));
+        });
+    }
+
+    // 2. Handle PWA Install Prompt
+    let deferredPrompt;
+    const pwaBtn = document.getElementById('pwa-install-btn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (pwaBtn) pwaBtn.style.display = 'flex';
+    });
+
+
+    // 3. PLATFORM DETECTION & UI ADAPTATION
+    const androidBtn = document.getElementById('android-dl-btn');
+    const iphoneBtn = document.getElementById('iphone-dl-btn');
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    // Handle Android Button
+    if (androidBtn) {
+        androidBtn.addEventListener('click', async () => {
+            // PWA Logic within Android button
+            if (deferredPrompt) {
+                // Give a small delay so the APK download can start first
+                setTimeout(async () => {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`User response to the install prompt: ${outcome}`);
+                    deferredPrompt = null;
+                }, 1500);
+            }
+        });
+    }
+
+    // Handle iPhone Button
+    if (iphoneBtn) {
+        iphoneBtn.addEventListener('click', () => {
+            const modal = document.getElementById('ios-modal');
+            if (modal) modal.classList.remove('hidden');
+        });
+    }
+
+
+
+    // Modal Close Logic
+    window.closeIosModal = function () {
+        const modal = document.getElementById('ios-modal');
+        if (modal) modal.classList.add('hidden');
+    };
+
+    // Hide iOS Modal on click background
+    const iosModal = document.getElementById('ios-modal');
+    if (iosModal) {
+        iosModal.addEventListener('click', (e) => {
+            if (e.target.id === 'ios-modal') closeIosModal();
+        });
+    }
+
+    // Hide PWA info if already installed
+    window.addEventListener('appinstalled', (evt) => {
+        console.log('Folkpresso App was installed.');
+        const info = document.querySelector('.pwa-info');
+        if (info) info.style.display = 'none';
+    });
 });

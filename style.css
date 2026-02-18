@@ -1,17 +1,20 @@
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    margin: 0; 
-    font-family: 'Poppins', sans-serif; 
-    /* Gradasi dari putih ke abu-abu */ 
-    background: linear-gradient(to bottom, #ffffff, #dad3d3); 
-    min-height: 100vh; 
-    display: flex; 
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    /* Gradasi dari putih ke abu-abu */
+    background: linear-gradient(to bottom, #ffffff, #dad3d3);
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
 }
+
 /* Container Utama Loader */
 #loader-wrapper {
     position: fixed;
@@ -24,12 +27,12 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    
+
     /* 1. Transisi lebih lambat (1.2 detik) */
     /* 2. Cubic-bezier memberikan efek 'smooth start & slow stop' */
-    transition: 
-        opacity 3.5s cubic-bezier(0.65, 0, 0.35, 1), 
-        visibility 3.9s, 
+    transition:
+        opacity 3.5s cubic-bezier(0.65, 0, 0.35, 1),
+        visibility 3.9s,
         backdrop-filter 1.2s ease-in-out,
         transform 1.9s cubic-bezier(0.65, 0, 0.35, 1);
 }
@@ -39,20 +42,26 @@ body.page-loaded #loader-wrapper {
     opacity: 0;
     visibility: hidden;
     backdrop-filter: blur(20px);
-    transform: scale(1.0); /* Memberikan efek seolah-olah kamera maju saat loading selesai */
+    transform: scale(1.0);
+    /* Memberikan efek seolah-olah kamera maju saat loading selesai */
 }
+
 .detail-container {
     opacity: 0;
-    transform: translateY(20px); /* Konten mulai sedikit di bawah */
-    transition: 
-        opacity 1.5s ease-out 2.9s, 
-        transform 9.5s ease-out 19.9s; /* Delay 0.5s agar muncul setelah loader mulai pudar */
+    transform: translateY(20px);
+    /* Konten mulai sedikit di bawah */
+    transition:
+        opacity 1.5s ease-out 2.9s,
+        transform 9.5s ease-out 19.9s;
+    /* Delay 0.5s agar muncul setelah loader mulai pudar */
 }
 
 body.page-loaded .detail-container {
     opacity: 1;
-    transform: translateY(0); /* Konten naik perlahan ke posisi asli */
+    transform: translateY(0);
+    /* Konten naik perlahan ke posisi asli */
 }
+
 .loader-content {
     text-align: center;
 }
@@ -64,9 +73,20 @@ body.page-loaded .detail-container {
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); opacity: 1.8; }
-    50% { transform: scale(1.05); opacity: 2.0; }
-    100% { transform: scale(0.95); opacity: 0.8; }
+    0% {
+        transform: scale(0.95);
+        opacity: 1.8;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 2.0;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
 }
 
 /* Progress Bar Sederhana */
@@ -87,8 +107,13 @@ body.page-loaded .detail-container {
 }
 
 @keyframes fillProgress {
-    0% { width: 0%; }
-    100% { width: 100%; }
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
 }
 
 /* State awal: Body transparan untuk Fade In */
@@ -109,53 +134,63 @@ body.page-loaded {
 /* State saat ingin pindah halaman (Fade Out) */
 body.fade-out {
     opacity: 0.1;
-    pointer-events: none; /* Cegah klik ganda saat transisi */
+    pointer-events: none;
+    /* Cegah klik ganda saat transisi */
 }
 
-.folkpresso-footer { 
-    background-color: #1f1f1f; 
-    color: #e0e0e0; 
-    padding: 40px 20px; 
-    text-align: center; 
-    font-family: 'Poppins', sans-serif; 
-    border-top: 1px solid #444; } 
-    
-    .footer-inner p { 
-        margin: 10px 0; 
-        font-size: 14px; 
-        letter-spacing: 0.5px; } 
-        
-        .ig-link img { 
-            width: 26px; 
-            height: 26px; 
-            margin-left: 6px; 
-            vertical-align: middle; 
-            transition: transform 0.3s ease, filter 0.3s ease; } 
-            
-            .ig-link img:hover { 
-                transform: scale(1.1); 
-                filter: brightness(1.3); } 
-                
-                
+.folkpresso-footer {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    border-top: 1px solid #444;
+}
+
+.footer-inner p {
+    margin: 10px 0;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.ig-link img {
+    width: 26px;
+    height: 26px;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.ig-link img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+}
+
+
 /* Navbar persis gambar */
 /* Container utama untuk logo dan teks */
 .logo-container {
     display: flex;
-    align-items: center; /* Menyejajarkan logo dan teks tepat di tengah secara vertikal */
-    gap: 15px;           /* Memberi jarak horizontal antara logo dan tulisan */
+    align-items: center;
+    /* Menyejajarkan logo dan teks tepat di tengah secara vertikal */
+    gap: 15px;
+    /* Memberi jarak horizontal antara logo dan tulisan */
 }
 
 /* Mengatur ukuran logo */
 .merk {
-    height: 50px;        /* Atur tinggi logo agar sesuai dengan ukuran teks navbar */
-    width: auto;         /* Lebar otomatis agar gambar tidak gepeng */
+    height: 50px;
+    /* Atur tinggi logo agar sesuai dengan ukuran teks navbar */
+    width: auto;
+    /* Lebar otomatis agar gambar tidak gepeng */
     object-fit: contain;
 }
 
 /* Mengatur gaya tulisan FOLKPRESSO */
 .logo-text {
     font-weight: 800;
-    font-size: 2.2rem;   /* Sesuaikan dengan font-size navbar Anda sebelumnya */
+    font-size: 2.2rem;
+    /* Sesuaikan dengan font-size navbar Anda sebelumnya */
     line-height: 1;
 }
 
@@ -163,20 +198,24 @@ body.fade-out {
 .navbar {
     display: flex;
     align-items: center;
-    padding: 30px 60px;  /* Sesuai dengan padding asli Anda */
+    padding: 30px 60px;
+    /* Sesuai dengan padding asli Anda */
 }
 
 .journey-section {
-    overflow: hidden; /* Mengunci agar teks yang meluap tidak merusak layar */
+    overflow: hidden;
+    /* Mengunci agar teks yang meluap tidak merusak layar */
     padding: 20px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    position: relative; /* Wajib relative agar mengikuti urutan konten */
+    position: relative;
+    /* Wajib relative agar mengikuti urutan konten */
     width: 100%;
-    margin-top: 100px; /* Memberikan jarak agar tidak langsung terlihat di awal */
+    margin-top: 100px;
+    /* Memberikan jarak agar tidak langsung terlihat di awal */
     z-index: 1;
-    
+
 }
 
 .marquee {
@@ -188,14 +227,16 @@ body.fade-out {
 .marquee-content {
     display: flex;
     white-space: nowrap;
-    gap: 40px; /* Jarak antar teks */
-   
+    gap: 40px;
+    /* Jarak antar teks */
+
 }
 
 .marquee-content span {
     display: inline-block;
     font-family: "Titan One", sans-serif cursive;
-    font-size: 11vw; /* Ukuran dinamis agar meluap sedikit keluar layar secara clean */
+    font-size: 11vw;
+    /* Ukuran dinamis agar meluap sedikit keluar layar secara clean */
     font-weight: 900;
     font-style: italic;
     color: transparent;
@@ -205,16 +246,18 @@ body.fade-out {
     text-transform: uppercase;
     letter-spacing: 1px;
 
-    text-shadow: 
+    text-shadow:
         1px 1px 0px #ffffff,
         2px 2px 0px #ebdddd,
         3px 3px 0px #b1b1b1,
         4px 4px 0px #a1a1a1,
-        5px 5px 10px rgba(0, 0, 0, 0.138); /* Bayangan halus paling bawah */
+        5px 5px 10px rgba(0, 0, 0, 0.138);
+    /* Bayangan halus paling bawah */
 }
 
 .marquee-bottom .marquee-content span {
-    color: transparent; /* Baris bawah dibuat transparan/kosong */
+    color: transparent;
+    /* Baris bawah dibuat transparan/kosong */
     -webkit-text-stroke: 15px #e6d2d2;
 }
 
@@ -229,39 +272,58 @@ body.fade-out {
 }
 
 @keyframes scrollLeft {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 @keyframes scrollRight {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 /* Sesuaikan padding main-content */
 .main-content {
-    padding-top: 60px; /* Dikurangi dari 250px karena sudah ada jarak dari wave */
+    padding-top: 60px;
+    /* Dikurangi dari 250px karena sudah ada jarak dari wave */
     position: relative;
     z-index: 1;
 }
 
 /* Hero Section: Gelas di Kiri, Teks di Kanan */
 .hero {
-    display: flex; align-items: center;
-    padding: 0 300px; height: 800px;
+    display: flex;
+    align-items: center;
+    padding: 0 300px;
+    height: 800px;
 }
+
 /* Container untuk dekorasi background */
 .menu-group {
-    position: relative; /* Penting agar deco bisa diposisikan absolute terhadap section ini */
-    overflow: visible; 
+    position: relative;
+    /* Penting agar deco bisa diposisikan absolute terhadap section ini */
+    overflow: visible;
 }
 
 .bg-deco {
     position: absolute;
-    z-index: 0; /* Di bawah teks dan kartu */
-    pointer-events: none; /* Agar tidak bisa diklik/mengganggu drag carousel */
-    opacity: 0.15; /* Dibuat samar agar elegan */
-    filter: blur(2px); /* Efek bokeh sedikit */
+    z-index: 0;
+    /* Di bawah teks dan kartu */
+    pointer-events: none;
+    /* Agar tidak bisa diklik/mengganggu drag carousel */
+    opacity: 0.15;
+    /* Dibuat samar agar elegan */
+    filter: blur(2px);
+    /* Efek bokeh sedikit */
     transition: transform 0.8s ease;
 }
 
@@ -290,7 +352,8 @@ body.fade-out {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(5deg);
-    opacity: 0.1; /* Sedikit lebih samar karena posisinya di tengah */
+    opacity: 0.1;
+    /* Sedikit lebih samar karena posisinya di tengah */
 }
 
 /* Efek interaktif: saat section di-hover, gambar sedikit bergerak */
@@ -306,8 +369,10 @@ et.assembled {
 /* Style untuk pecahan-pecahan kecil */
 .coffee-particle {
     position: absolute;
-    width: 30p/* Container Utama */
+    width: 30p
+        /* Container Utama */
 }
+
 /* Container Utama */
 .hero-img-wrapper {
     position: relative;
@@ -325,10 +390,10 @@ et.assembled {
     opacity: 0;
     transform: scale(0.9);
     /* Transisi sangat halus untuk gambar utama */
-    transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 5;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
 }
 
 .hero-img-target.assembled {
@@ -338,7 +403,8 @@ et.assembled {
 
 .coffee-particle {
     position: absolute;
-    width: 80px; /* Ukuran serpihan lebih besar agar tidak terlihat seperti pixel */
+    width: 80px;
+    /* Ukuran serpihan lebih besar agar tidak terlihat seperti pixel */
     height: 80px;
     background-image: url('img/biji kopi.png');
     background-size: contain;
@@ -347,128 +413,207 @@ et.assembled {
     pointer-events: none;
     opacity: 0;
     /* Animasi pergerakan yang 'liquid' (cair) */
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                opacity 0.8s ease-out, 
-                filter 0.8s ease-out;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.8s ease-out,
+        filter 0.8s ease-out;
 }
 
-.hero-left { flex: 1; display: flex; justify-content: center; }
-.hero-right { flex: 1.5; padding-left: 20px; }
+.hero-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-right {
+    flex: 1.5;
+    padding-left: 20px;
+}
+
+.hero-img-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(2deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(-2deg);
+    }
+}
+
+.hero-img-target {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+}
 
 .hero-img {
-    width: 390px; /* Ukuran besar sesuai gambar */
-    filter: drop-shadow(0 90px 40px rgba(0,0,0,0.1));
+    width: 390px;
+    filter: drop-shadow(0 90px 40px rgba(0, 0, 0, 0.1));
 }
 
 .hero-right h1 {
-    font-size: 5rem; font-weight: 900; line-height: 1; color: #000;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: #000;
 }
 
 .tagline {
-    font-size: 1.9rem; margin-top: 25px; color: #a2a2a2; font-style: italic;
+    font-size: 1.9rem;
+    margin-top: 25px;
+    color: #a2a2a2;
+    font-style: italic;
 }
 
 
 /* Area Menu dengan Background Gradasi Abu-abu */
 .main-content {
     background: linear-gradient(180deg, #f2ecec04 0%, #e7dfdf 20%, #cbb0b0 100%);
-    padding-top: 250px; padding-bottom: 100px;
-    min-height: 100vh; 
-    display: flex; 
+    padding-top: 250px;
+    padding-bottom: 100px;
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
-   
+
 }
 
 .category-title {
-   padding: 3%; padding-left: 100px; font-size: 2.2rem; font-weight: 800; margin: 40px 0 20px 0; text-align: center;
+    padding: 3%;
+    padding-left: 100px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 40px 0 20px 0;
+    text-align: center;
 }
 
 /* Carousel Infinity */
 .carousel {
-    width: 100%; overflow: hidden; cursor: grab; padding: 30px 0;
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+    padding: 30px 0;
 }
 
 .track {
-    display: flex; gap: 35px; width: max-content;
+    display: flex;
+    gap: 35px;
+    width: max-content;
 }
 
 /* Product Card - Efek Glassmorphism Tinggi */
 .card {
-    width: 320px; height: 420px;
+    width: 320px;
+    height: 420px;
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
-    display: flex; flex-direction: column; align-items: center;
-    padding: 25px; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-    position: relative; /* penting agar overlay bisa absolute */ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    position: relative;
+    /* penting agar overlay bisa absolute */
     overflow: hidden;
 }
 
-.overlay { 
-    position: absolute; 
-    top: 0; 
+.overlay {
+    position: absolute;
+    top: 0;
     left: 0;
-     width: 100%; 
-     height: 100%; 
-     background: rgba(0,0,0,0.4); 
-     color: #fff; 
-     font-size: 1.6rem;
-      font-weight: bold; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-       opacity: 0; /* default tidak terlihat */ 
-       transition: opacity 0.3s ease; 
-       border-radius: 40px; /* sama dengan card */ 
-    }
-
-.shape {
-    width: 100%; height: 75%;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 30px; margin-bottom: 20px; overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    /* default tidak terlihat */
+    transition: opacity 0.3s ease;
+    border-radius: 40px;
+    /* sama dengan card */
 }
 
-.shape img { width: 100%; height: 100%; object-fit: cover; }
+.shape {
+    width: 100%;
+    height: 75%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 
-.card p { font-weight: 800; font-size: 1.4rem; color: #000; }
+.shape img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card p {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #000;
+}
 
 /* Pop-up Effect */
 .card:hover {
     transform: translateY(-30px) scale(1.03);
-    box-shadow: 0 40px 60px rgba(0,0,0,0.08);
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.08);
 }
 
-.card:hover .overlay { 
-    opacity: 0; /* muncul saat hover */ 
+.card:hover .overlay {
+    opacity: 0;
+    /* muncul saat hover */
 }
+
 /* Container Carousel harus relatif agar gambar tidak lari ke luar */
 .carousel {
     position: relative;
     overflow: hidden;
 }
+
 /* Pastikan animasi wave ini dipicu HANYA setelah partikel selesai menyatu */
 .hero-img-target.assembled {
     animation: smoothWave 5s ease-in-out infinite !important;
 }
-.card:hover .overlay { 
-    opacity: 1; /* Ubah dari 0 ke 1 agar muncul saat di-hover */
+
+.card:hover .overlay {
+    opacity: 1;
+    /* Ubah dari 0 ke 1 agar muncul saat di-hover */
 }
 
 @keyframes smoothWave {
     0% {
         transform: scale(1) translateY(0px) rotate(0deg);
-        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
     }
+
     50% {
         /* Naik sedikit, miring sedikit, dan bayangan menjauh */
         transform: scale(1.02) translateY(-20px) rotate(2deg);
-        filter: drop-shadow(0 40px 50px rgba(0,0,0,0.15));
+        filter: drop-shadow(0 40px 50px rgba(0, 0, 0, 0.15));
     }
+
     100% {
         transform: scale(1) translateY(0px) rotate(0deg);
-        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
     }
 }
 
@@ -480,13 +625,19 @@ et.assembled {
 /* Styling Gambar Melayang */
 .floating-bg-cup {
     position: absolute;
-    top:-40%;
-    left: 70%; /* Posisi sedikit ke kiri dari tengah */
-    width: 250px; /* Ukuran besar di belakang kartu */
-    z-index: 0; /* Di belakang .track (kartu) */
-    opacity: 0.5; /* Transparansi agar elegan */
-    pointer-events: none; /* WAJIB: agar tidak merusak script swipe */
-    filter: blur(1px); /* Memberikan efek depth of field (fokus hanya pada kartu) */
+    top: -40%;
+    left: 70%;
+    /* Posisi sedikit ke kiri dari tengah */
+    width: 250px;
+    /* Ukuran besar di belakang kartu */
+    z-index: 0;
+    /* Di belakang .track (kartu) */
+    opacity: 0.5;
+    /* Transparansi agar elegan */
+    pointer-events: none;
+    /* WAJIB: agar tidak merusak script swipe */
+    filter: blur(1px);
+    /* Memberikan efek depth of field (fokus hanya pada kartu) */
     transition: all 0.1s ease-in-out;
 }
 
@@ -494,13 +645,15 @@ et.assembled {
     width: 300%;
     height: auto;
     display: block;
-    transform: rotate(-19deg); /* Kemiringan estetik */
+    transform: rotate(-19deg);
+    /* Kemiringan estetik */
 }
 
 /* Pastikan Track (wadah kartu) berada di atas gambar */
 .track {
     position: relative;
-    z-index: 3; /* Di atas gambar cup */
+    z-index: 3;
+    /* Di atas gambar cup */
 }
 
 /* Variasi posisi untuk section kedua agar tidak monoton */
@@ -516,20 +669,27 @@ et.assembled {
 /* Efek saat user melakukan hover pada area menu */
 .menu-group:hover .floating-bg-cup {
     opacity: 0.4;
-    filter: blur(0px); /* Menjadi sedikit lebih tajam saat dilihat */
-    
+    filter: blur(0px);
+    /* Menjadi sedikit lebih tajam saat dilihat */
+
 }
 
 /* Styling Gambar Melayang 1*/
 .floating-bg-cup1 {
     position: absolute;
-    top:-10%;
-    left: -25%; /* Posisi sedikit ke kiri dari tengah */
-    width: 350px; /* Ukuran besar di belakang kartu */
-    z-index: 0; /* Di belakang .track (kartu) */
-    opacity: 0.5; /* Transparansi agar elegan */
-    pointer-events: none; /* WAJIB: agar tidak merusak script swipe */
-    filter: blur(1px); /* Memberikan efek depth of field (fokus hanya pada kartu) */
+    top: -10%;
+    left: -25%;
+    /* Posisi sedikit ke kiri dari tengah */
+    width: 350px;
+    /* Ukuran besar di belakang kartu */
+    z-index: 0;
+    /* Di belakang .track (kartu) */
+    opacity: 0.5;
+    /* Transparansi agar elegan */
+    pointer-events: none;
+    /* WAJIB: agar tidak merusak script swipe */
+    filter: blur(1px);
+    /* Memberikan efek depth of field (fokus hanya pada kartu) */
     transition: all 1.0s ease-in-out;
 }
 
@@ -537,13 +697,15 @@ et.assembled {
     width: 300%;
     height: auto;
     display: block;
-    transform: rotate(10deg); /* Kemiringan estetik */
+    transform: rotate(10deg);
+    /* Kemiringan estetik */
 }
 
 /* Pastikan Track (wadah kartu) berada di atas gambar */
 .track {
     position: relative;
-    z-index: 3; /* Di atas gambar cup */
+    z-index: 3;
+    /* Di atas gambar cup */
 }
 
 /* Variasi posisi untuk section kedua agar tidak monoton */
@@ -559,19 +721,26 @@ et.assembled {
 /* Efek saat user melakukan hover pada area menu */
 .menu-group:hover .floating-bg-cup1 {
     opacity: 0.4;
-    filter: blur(0px); /* Menjadi sedikit lebih tajam saat dilihat */
+    filter: blur(0px);
+    /* Menjadi sedikit lebih tajam saat dilihat */
 }
 
 /* Styling Gambar Melayang 1*/
 .floating-bg-cup2 {
     position: absolute;
-    top:-50%;
-    left: -25%; /* Posisi sedikit ke kiri dari tengah */
-    width: 350px; /* Ukuran besar di belakang kartu */
-    z-index: 0; /* Di belakang .track (kartu) */
-    opacity: 0.5; /* Transparansi agar elegan */
-    pointer-events: none; /* WAJIB: agar tidak merusak script swipe */
-    filter: blur(1px); /* Memberikan efek depth of field (fokus hanya pada kartu) */
+    top: -50%;
+    left: -25%;
+    /* Posisi sedikit ke kiri dari tengah */
+    width: 350px;
+    /* Ukuran besar di belakang kartu */
+    z-index: 0;
+    /* Di belakang .track (kartu) */
+    opacity: 0.5;
+    /* Transparansi agar elegan */
+    pointer-events: none;
+    /* WAJIB: agar tidak merusak script swipe */
+    filter: blur(1px);
+    /* Memberikan efek depth of field (fokus hanya pada kartu) */
     transition: all 1.0s ease-in-out;
 }
 
@@ -579,13 +748,15 @@ et.assembled {
     width: 300%;
     height: auto;
     display: block;
-    transform: rotate(19deg); /* Kemiringan estetik */
+    transform: rotate(19deg);
+    /* Kemiringan estetik */
 }
 
 /* Pastikan Track (wadah kartu) berada di atas gambar */
 .track {
     position: relative;
-    z-index: 3; /* Di atas gambar cup */
+    z-index: 3;
+    /* Di atas gambar cup */
 }
 
 /* Variasi posisi untuk section kedua agar tidak monoton */
@@ -601,10 +772,11 @@ et.assembled {
 /* Efek saat user melakukan hover pada area menu */
 .menu-group:hover .floating-bg-cup2 {
     opacity: 0.4;
-    filter: blur(0px); /* Menjadi sedikit lebih tajam saat dilihat */
+    filter: blur(0px);
+    /* Menjadi sedikit lebih tajam saat dilihat */
 }
 
-   
+
 /* Animasi Loop */
 /* Hapus atau komentari bagian animasi CSS sebelumnya */
 /* .rtl .track { animation: scrollRTL 35s linear infinite; } */
@@ -614,7 +786,8 @@ et.assembled {
     display: flex;
     gap: 35px;
     width: max-content;
-    will-change: transform; /* Optimasi agar swipe lancar */
+    will-change: transform;
+    /* Optimasi agar swipe lancar */
     cursor: grab;
 }
 
@@ -623,53 +796,141 @@ et.assembled {
 }
 
 .card {
-    user-select: none; /* Mencegah teks terpilih saat di-swipe */
-    -webkit-user-drag: none; /* Mencegah gambar ikut ter-drag */
+    user-select: none;
+    /* Mencegah teks terpilih saat di-swipe */
+    -webkit-user-drag: none;
+    /* Mencegah gambar ikut ter-drag */
 }
 
 .card img {
-    pointer-events: none; /* Agar gambar tidak mengganggu proses swipe */
-    pointer-events: none; /* Penting agar swipe tidak nyangkut di gambar */
+    pointer-events: none;
+    /* Agar gambar tidak mengganggu proses swipe */
+    pointer-events: none;
+    /* Penting agar swipe tidak nyangkut di gambar */
     -webkit-user-drag: none;
 }
 
 .card {
-    cursor: pointer; /* Menandakan elemen bisa diklik */
+    cursor: pointer;
+    /* Menandakan elemen bisa diklik */
     user-select: none;
 }
 
 .card:active {
-    transform: scale(0.95); /* Efek visual saat kartu ditekan */
+    transform: scale(0.95);
+    /* Efek visual saat kartu ditekan */
     transition: transform 0.1s;
 }
 
 
 
-.rtl .track { animation: scrollRTL 235s linear infinite; }
-.ltr .track { animation: scrollLTR 135s linear infinite; }
+.rtl .track {
+    animation: scrollRTL 235s linear infinite;
+}
+
+.ltr .track {
+    animation: scrollLTR 135s linear infinite;
+}
 
 
 /* Responsive Mobile (iPhone/Android) */
+/* Consolidation: Redundant download-section block removed. Using premium styles below. */
+
+.dl-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 30px;
+    background: #1f1f1f;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dl-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    background: #000;
+}
+
+.dl-icon {
+    font-size: 2rem;
+}
+
+.dl-text {
+    text-align: left;
+}
+
+.dl-text small {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: -2px;
+}
+
+.dl-text strong {
+    font-size: 1.1rem;
+}
+
+.pwa-info {
+    margin-top: 20px !important;
+    font-size: 0.8rem !important;
+    opacity: 0.6;
+}
+
+/* Specific button styles */
+.dl-apk {
+    background: #1f1f1f;
+}
+
+.dl-pwa {
+    background: #334155;
+}
+
+/* Slate style for PWA */
+
+@media screen and (max-width: 768px) {
+    .download-container h3 {
+        font-size: 1.8rem;
+    }
+
+    .dl-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
 @media screen and (max-width: 1024px) {
+
     /* Tablet & iPad */
     .hero {
-        min-height: 90vh; /* Memastikan Hero memenuhi layar tablet */
+        min-height: 90vh;
+        /* Memastikan Hero memenuhi layar tablet */
     }
+
     .journey-section {
         margin-top: 50px !important;
     }
 }
 
-@media (max-width: 768px )  {
+@media (max-width: 768px) {
     .hero {
         flex-direction: column !important;
-        height: 10vh !important; /* Memenuhi tinggi layar HP */
+        height: 10vh !important;
+        /* Memenuhi tinggi layar HP */
         min-height: 600px;
         padding: 100px 20px 40px 20px !important;
         justify-content: center;
     }
 
-    .hero-left, .hero-right {
+    .hero-left,
+    .hero-right {
         flex: none;
         width: 100%;
         height: auto;
@@ -680,6 +941,7 @@ et.assembled {
         height: 250px !important;
         margin: 0 auto !important;
     }
+
     .hero-right h1 {
         font-size: 2.8rem !important;
         margin-top: 20px;
@@ -690,21 +952,24 @@ et.assembled {
         margin-top: 250px !important;
         margin-bottom: 150px;
         padding-top: 0 !important;
-    
+
     }
 
-   .marquee-content span {
+    .marquee-content span {
         font-size: 25vw !important;
-        -webkit-text-stroke: 0.3px #dad3d3 !important; /* Stroke sangat tipis */
+        -webkit-text-stroke: 0.3px #dad3d3 !important;
+        /* Stroke sangat tipis */
         /* Line height dirapatkan khusus mobile */
-        line-height: 0.9 !important; 
+        line-height: 0.9 !important;
         padding: 5px 10px !important;
         letter-spacing: 10px;
         font-family: "Titan One", sans-serif, cursive !important;
-        
+
     }
+
     /* Mencegah layar goyang karena teks meluap */
-    body, .main-content {
+    body,
+    .main-content {
         overflow-x: hidden !important;
     }
 
@@ -712,87 +977,122 @@ et.assembled {
         font-size: 1.2rem;
         margin-top: 10px;
     }
-    .card { 
-        width: 240px; 
-        height: 340px; 
+
+    .card {
+        width: 240px;
+        height: 340px;
         padding: 15px;
     }
-    
+
     .category-title {
         margin: 20px 0 !important;
         padding-left: 20px !important;
     }
-    
-    .folkpresso-footer { padding: 30px 15px; } 
-    .footer-inner p { font-size: 13px; } 
-    .ig-link img { width: 22px; height: 22px; } 
-    .navbar { 
-        padding: 15px 20px; 
-        justify-content: center; /* Pusatkan logo di mobile */
+
+    .folkpresso-footer {
+        padding: 30px 15px;
     }
-    .logo-wrapper { gap: 10px; /* Jarak lebih rapat di HP */ }
-    .merk { height: 35px; }
-    .logo-text { font-size: 1.5rem; }
-    
-/* Perbaikan Hero Section agar gambar tidak menutupi teks */
+
+    .footer-inner p {
+        font-size: 13px;
+    }
+
+    .ig-link img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+        justify-content: center;
+        /* Pusatkan logo di mobile */
+    }
+
+    .logo-wrapper {
+        gap: 10px;
+        /* Jarak lebih rapat di HP */
+    }
+
+    .merk {
+        height: 35px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    /* Perbaikan Hero Section agar gambar tidak menutupi teks */
     .hero {
         flex-direction: column;
         height: auto;
         padding-top: 20px;
     }
-    
+
     .hero-img {
-        width: 220px; /* Ukuran gambar kopi mengecil di HP */
+        width: 220px;
+        /* Ukuran gambar kopi mengecil di HP */
     }
-   /* Mencegah konten memotong elemen di dalamnya secara paksa */
-   .menu-group {
-    overflow: visible; 
-}
 
-/* Pastikan main-content tidak membuat scroll horizontal tapi mengizinkan elemen meluap sedikit */
-.main-content {
+    /* Mencegah konten memotong elemen di dalamnya secara paksa */
+    .menu-group {
+        overflow: visible;
+    }
+
+    /* Pastikan main-content tidak membuat scroll horizontal tapi mengizinkan elemen meluap sedikit */
+    .main-content {
         padding-top: 20px !important;
-        overflow-x: hidden !important; /* Mencegah layar goyang kanan-kiri */
+        overflow-x: hidden !important;
+        /* Mencegah layar goyang kanan-kiri */
     }
 
-/* Pengaturan umum untuk semua background melayang di Mobile */
-.floating-bg-cup, 
-.floating-bg-cup1, 
-.floating-bg-cup2 {
-    width: 150px;       /* Perkecil ukuran container di mobile */
-    opacity: 0.4;       /* Sedikit lebih jelas agar terlihat */
-    z-index: 1;         /* Pastikan di bawah kartu tapi di atas background */
-    filter: blur(2px);  /* Tambahkan sedikit blur agar menyatu */
-}
+    /* Pengaturan umum untuk semua background melayang di Mobile */
+    .floating-bg-cup,
+    .floating-bg-cup1,
+    .floating-bg-cup2 {
+        width: 150px;
+        /* Perkecil ukuran container di mobile */
+        opacity: 0.4;
+        /* Sedikit lebih jelas agar terlihat */
+        z-index: 1;
+        /* Pastikan di bawah kartu tapi di atas background */
+        filter: blur(2px);
+        /* Tambahkan sedikit blur agar menyatu */
+    }
 
-/* Posisikan ulang agar tidak terlalu jauh ke luar layar (biar tidak terpotong) */
-.floating-bg-cup {
-    top: -20px;
-    right: 65px;         /* Dekatkan ke area layar terlihat */
-    left: auto;
-}
+    /* Posisikan ulang agar tidak terlalu jauh ke luar layar (biar tidak terpotong) */
+    .floating-bg-cup {
+        top: -20px;
+        right: 65px;
+        /* Dekatkan ke area layar terlihat */
+        left: auto;
+    }
 
-.floating-bg-cup1 {
-    top: -30px;
-    left: -250px;          /* Dekatkan ke area layar terlihat */
-}
+    .floating-bg-cup1 {
+        top: -30px;
+        left: -250px;
+        /* Dekatkan ke area layar terlihat */
+    }
 
-.floating-bg-cup2 {
-    top: -30px;
-    left: -250px;  
-}
+    .floating-bg-cup2 {
+        top: -30px;
+        left: -250px;
+    }
 
-/* Perbaikan Gambar di dalamnya agar tidak meluap 300% */
-.floating-bg-cup img,
-.floating-bg-cup1 img,
-.floating-bg-cup2 img {
-    width: 300%;        /* Sesuaikan skala agar tidak terlalu besar di layar kecil */
-    height: auto;
-    transform: rotate(15deg); /* Berikan rotasi standar */
-}
+    /* Perbaikan Gambar di dalamnya agar tidak meluap 300% */
+    .floating-bg-cup img,
+    .floating-bg-cup1 img,
+    .floating-bg-cup2 img {
+        width: 300%;
+        /* Sesuaikan skala agar tidak terlalu besar di layar kecil */
+        height: auto;
+        transform: rotate(15deg);
+        /* Berikan rotasi standar */
+    }
 
     /* 5. Footer */
-    .folkpresso-footer { padding: 30px 15px; }
+    .folkpresso-footer {
+        padding: 30px 15px;
+    }
 }
 
 
@@ -801,3 +1101,307 @@ et.assembled {
 
 
 
+
+
+/* DOWNLOAD SECTION PREMIUM STYLES */
+.download-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #0a0a0b 0%, #161618 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.download-container h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.download-container p {
+    color: #94a3b8;
+    margin-bottom: 40px;
+}
+
+.download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.dl-btn {
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 25px;
+    border-radius: 24px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dl-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.dl-btn:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dl-btn:hover::before {
+    opacity: 1;
+}
+
+.dl-android {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.dl-iphone {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.dl-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.dl-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.dl-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dl-icon {
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dl-android .dl-icon i {
+    color: #3ddc84;
+    /* Android Green */
+    filter: drop-shadow(0 0 10px rgba(61, 220, 132, 0.3));
+}
+
+.dl-iphone .dl-icon i {
+    color: #fff;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.dl-text {
+    text-align: left;
+}
+
+.dl-text small {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.dl-text strong {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #fff;
+    display: block;
+}
+
+.pwa-info {
+    margin-top: 30px;
+    font-size: 0.75rem;
+    color: #475569;
+    font-style: italic;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* iOS INSTALL MODAL STYLES REFINED */
+.ios-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ios-modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 40px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #333;
+}
+
+.ios-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f1f1f1;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+}
+
+.ios-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    margin-bottom: 25px;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.ios-app-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ios-app-info strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.ios-app-info small {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.ios-steps {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.ios-steps p {
+    font-weight: 800;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.ios-steps ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ios-steps li {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.ios-steps li i {
+    color: #007aff;
+    /* Apple Blue */
+    margin-left: 5px;
+}
+
+.ios-btn-ok {
+    width: 100%;
+    background: #007aff;
+    color: white;
+    padding: 18px;
+    border-radius: 20px;
+    border: none;
+    font-weight: 900;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.ios-btn-ok:active {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-pop {
+    animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Style Polishing for Download Icons */
+.dl-icon i {
+    color: #a3e635;
+    /* Android Green as default */
+    transition: color 0.3s;
+}
+
+.dl-pwa .dl-icon i {
+    color: #fff;
+    /* White for PWA icon */
+}
+
+.dl-btn:hover .dl-icon i {
+    transform: scale(1.1);
+}
