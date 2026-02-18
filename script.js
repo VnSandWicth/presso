@@ -179,93 +179,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 
     // ==========================================
-    // PWA & SERVICE WORKER LOGIC
+    // DIRECT ORDER REDIRECT LOGIC
     // ==========================================
+    const directBtn = document.getElementById('direct-order-btn');
 
-    // 1. Register Service Worker
+    if (directBtn) {
+        directBtn.addEventListener('click', () => {
+            // Langsung GAS ke domain app bang! 🚀
+            window.location.href = 'https://folkpresso-apk.vercel.app/';
+        });
+    }
+
+    // Optional: Keep SW for landing page performance if desired, 
+    // or remove if you want total simplicity.
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('sw.js')
-                .then(reg => console.log('SW Registered!', reg))
-                .catch(err => console.log('SW Registration Failed', err));
+                .then(reg => console.log('Landing SW Registered!', reg))
+                .catch(err => console.log('Landing SW Failed', err));
         });
     }
-
-    // 2. Handle PWA Install Prompt
-    // --- PWA AUTO-REDIRECT (Ensure installed app shows the App content, not the Web) ---
-    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-            window.location.href = '/app';
-        }
-    }
-
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent Chrome 67 and earlier from automatically showing the prompt
-        e.preventDefault();
-        // Stash the event so it can be triggered later.
-        deferredPrompt = e;
-        console.log('beforeinstallprompt event captured');
-    });
-
-
-    // 3. PLATFORM DETECTION & UI ADAPTATION
-    const androidBtn = document.getElementById('android-dl-btn');
-    const iphoneBtn = document.getElementById('iphone-dl-btn');
-
-    // Handle Android Button
-    if (androidBtn) {
-        androidBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // Show the install prompt IMMEDIATELY bang! 🚀
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User response: ${outcome}`);
-                deferredPrompt = null;
-            } else {
-                // Kalo misal prompt-nya belom ready, kita kasih loading palsu dikit biar pro
-                androidBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyiapkan...';
-                setTimeout(() => {
-                    if (deferredPrompt) {
-                        deferredPrompt.prompt();
-                    } else {
-                        androidBtn.innerHTML = '<i class="fa-brands fa-android"></i> DOWNLOAD FOR ANDROID';
-                        alert('Waduh, browser abang belum siap manggil instalasi. Coba refresh webnya sekali lagi ya bang! 🙏');
-                    }
-                }, 2000);
-            }
-        });
-    }
-
-    // Handle iPhone Button
-    if (iphoneBtn) {
-        iphoneBtn.addEventListener('click', () => {
-            const modal = document.getElementById('ios-modal');
-            if (modal) modal.classList.remove('hidden');
-        });
-    }
-
-
-
-    // Modal Close Logic
-    window.closeIosModal = function () {
-        const modal = document.getElementById('ios-modal');
-        if (modal) modal.classList.add('hidden');
-    };
-
-    // Hide iOS Modal on click background
-    const iosModal = document.getElementById('ios-modal');
-    if (iosModal) {
-        iosModal.addEventListener('click', (e) => {
-            if (e.target.id === 'ios-modal') closeIosModal();
-        });
-    }
-
-    // Hide PWA info if already installed
-    window.addEventListener('appinstalled', (evt) => {
-        console.log('Folkpresso App was installed.');
-        const info = document.querySelector('.pwa-info');
-        if (info) info.style.display = 'none';
-    });
 });

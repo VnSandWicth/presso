@@ -193,29 +193,18 @@
     <!-- Download App Section -->
     <section class="download-section glass">
         <div class="download-container">
-            <h3>Pesan Lewat Aplikasi</h3>
+            <h3>Mau Mesen ? lewat sini aja bang !</h3>
             <p>Nikmati pengalaman memesan kopi yang lebih cepat & kumpulkan poin reward!</p>
 
             <div class="download-buttons">
-                <!-- ANDROID BUTTON (APK + PWA PROMPT) -->
-                <button id="android-dl-btn" class="dl-btn dl-android">
-                    <span class="dl-icon"><i class="fa-brands fa-android"></i></span>
-                    <div class="dl-text">
-                        <small>Get it for</small>
-                        <strong>Android (PWA)</strong>
-                    </div>
-                </button>
-
-                <!-- IPHONE BUTTON (PWA MODAL) -->
-                <button id="iphone-dl-btn" class="dl-btn dl-iphone">
-                    <span class="dl-icon"><i class="fa-brands fa-apple"></i></span>
-                    <div class="dl-text">
-                        <small>Install for</small>
-                        <strong>iPhone (PWA)</strong>
+                <!-- SINGLE DIRECT BUTTON -->
+                <button id="direct-order-btn" class="dl-btn dl-android"
+                    style="justify-content: center; width: 100%; max-width: 300px; margin: 0 auto;">
+                    <div class="dl-text" style="text-align: center; margin-left: 0;">
+                        <strong style="font-size: 1.2rem;">PENCET BANG 🚀</strong>
                     </div>
                 </button>
             </div>
-
         </div>
     </section>
 
@@ -230,32 +219,6 @@
         </div>
 
     </footer>
-
-    <!-- iOS Install Instruction Modal (Balik lagi bang biar ga pindah domain) -->
-    <div id="ios-modal" class="ios-modal-overlay hidden">
-        <div class="ios-modal-content animate-pop">
-            <button class="ios-close" onclick="closeIosModal()">&times;</button>
-            <div class="ios-header">
-                <img src="img/logo-white.png" alt="Logo" class="ios-app-icon">
-                <div class="ios-app-info">
-                    <strong>Folkpresso App</strong>
-                    <small>folkpresso.com</small>
-                </div>
-            </div>
-            <div class="ios-steps">
-                <p>Cara instal di iPhone Bang:</p>
-                <ul>
-                    <li>1. Klik tombol <strong>Share</strong> (kotak panah atas) <i
-                            class="fa-solid fa-share-from-square"></i></li>
-                    <li>2. Scroll ke bawah, klik <strong>'Add to Home Screen'</strong> <i
-                            class="fa-solid fa-plus-square"></i></li>
-                    <li>3. Klik <strong>'Add'</strong> di pojok kanan atas! 🚀</li>
-                </ul>
-            </div>
-            <button class="ios-btn-ok" onclick="closeIosModal()">OKE, MENGERTI!</button>
-        </div>
-    </div>
-
     <script src="script.js"></script>
 </body>
 
