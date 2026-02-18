@@ -1,11 +1,13 @@
-const CACHE_NAME = 'folkpresso-landing-v2';
+const CACHE_NAME = 'folkpresso-app-v4';
 const ASSETS = [
     '/',
     'index.html',
     'style.css',
     'script.js',
-    'manifest.json',
-    'img/logo.png'
+    'f-app.json',
+    'img/logo.png',
+    '/app',
+    '/app/index.html'
 ];
 
 self.addEventListener('install', (event) => {

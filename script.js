@@ -224,8 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(`User response: ${outcome}`);
                 deferredPrompt = null;
             } else {
-                // Kalo misal prompt-nya belom ready, kita arahin ke /app biar dia nyoba disana
-                window.location.href = '/app';
+                // Kalo misal prompt-nya belom ready, kita kasih tau aja bang
+                alert('Tunggu sebentar ya bang biar browser-nya siap, atau cek menu browser buat "Instal Aplikasi"! 🚀');
             }
         });
     }
