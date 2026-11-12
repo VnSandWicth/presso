@@ -18,7 +18,7 @@ const MENU = [
     { name: 'Matcha Latte', cat: 'non', img: 'img/matcha.png', page: 'matcha.html', color: '#7da05a', line: 'Matcha earthy ketemu susu seger.' },
     { name: 'Chocolate', cat: 'non', img: 'img/coklat.png', page: 'coklat.html', color: '#6b3f2a', line: 'Cokelat pekat, manisnya pas.' }
 ];
-const ORDER_URL='https://folkpresso-apk.vercel.app/',MIN_ORDER_LUAR='Rp XX.000';
+const ORDER_URL='https://folkpresso-apk.vercel.app/',MIN_ORDER_LUAR='10 menu kopi';
 const BY=Object.fromEntries(MENU.map(m=>[m.name,m])),$=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const href=m=>m.page||'#pesan';
 const polo=m=>`<a class="polo" href="${href(m)}" style="--c:${m.color}"><div class="ph">${m.img?`<img src="${m.img}" alt="${m.name}" loading="lazy" draggable="false">`:m.name[0]}</div><b>${m.name}</b><small>${m.line}</small></a>`;
