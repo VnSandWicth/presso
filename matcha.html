@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folkpresso - Authentic Coffee</title>
-    <link rel="icon" type="img/ico" sizes="40x40" href="img/fp.ico">
+    <title>Matcha Latte - Folkpresso</title>
+    <meta name="description" content="Kopi susu paling aman. Manis arennya pas, gurih susunya dapet.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/fp.ico">
+    <link rel="stylesheet" href="style.css">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
-    <link rel="stylesheet" href="product/style.css">
+    <meta name="theme-color" content="#ff5b27">
 </head>
+<body style="--c:#8a5a34">
+<div id="progress"></div>
+<div id="loader">Lagi nyeduh...</div>
+<header class="top" id="dnav"><div class="wrap">
+    <a href="index.html" class="brand"><img src="img/logo.png" alt="Logo Folkpresso">Folkpresso</a>
+    <nav class="links"><a href="index.html#menu">&larr; Semua menu</a><a href="https://folkpresso-apk.vercel.app/" class="stk">Pesan</a></nav>
+</div></header>
 
-<body>
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="img/logo.png" alt="Logo Folkpresso" class="merk">
-            <span class="logo-text">FOLKPRESSO</span>
-        </div>
-    </nav>
-
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
-    <div id="loader-wrapper">
-        <div class="loader-content">
-            <img src="img/logo.png" alt="Loading..." class="loader-logo">
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <p>Preparing Your Coffee...</p>
-        </div>
+<main class="mp"><div class="wrap mp-in">
+    <div class="frame">
+        <model-viewer src="product/3d/matcha.glb" alt="Model 3D Aren Coffee" auto-rotate rotation-per-second="30deg" camera-controls disable-zoom shadow-intensity="1" interaction-prompt="none"></model-viewer>
+       
     </div>
-    <main class="detail-container">
-        <div class="card glass detail-card">
-            <div id="coffee-assemble-container" class="hero-img-wrapper">
-                <model-viewer src="product/3d/matcha.glb" alt="3D Coffee Model" auto-rotate rotation-per-second="30deg"
-                    camera-controls disable-zoom shadow-intensity="1" class="detail-img hero-img-target">
-                </model-viewer>
-            </div>
+    <div class="nb">
+        <p class="hand">Menu non-coffee</p>
+        <h1>Matcha Latte</h1>
+        <p class="lead">Pure Japanese vibes. Matcha premium yang earthy ketemu susu seger. Healing banget!</p>
+        <dl>
+            <div><dt>Dibikin</dt><dd>Saat kamu pesan, bukan sebelumnya.</dd></div>
+            <div><dt>Diantar</dt><dd>Parung, Sawangan, Ciputat, Pamulang.</dd></div>
+            <div><dt>Mesennya</dt><dd>Lewat aplikasi Folkpresso, ada poin reward.</dd></div>
+        </dl>
+        <div class="btns" style="margin-top:26px"><a href="https://folkpresso-apk.vercel.app/" class="stk big">Pesan Matcha Latte</a></div>
+        <nav class="pn" aria-label="Menu sebelumnya dan berikutnya"><a class="prev stk paper" href="coklat.html">&larr; Chocolate</a><a class="next stk paper" href="almond.html">Almond &rarr;</a></nav>
+    </div>
+</div></main>
 
-            <div class="detail-info">
-                <h1>Matcha Latte</h1>
-                <p>Pure Japanese vibes. Matcha premium yang earthy ketemu susu seger. Healing bgt!.</p>
+<section class="sec">
+    <div class="wrap sec-head reveal"><h2>Mau yang lain?</h2></div>
+    <div class="mrow"><div class="mtrack"><a class="polo" href="spanish.html" style="--c:#c8803a"><div class="ph"><img src="img/spanish.png" alt="Spanish Coffee" loading="lazy" draggable="false"></div><b>Spanish Coffee</b><small>Creamy dan smooth, kopinya tetep berasa.</small></a><a class="polo" href="salted.html" style="--c:#d49a52"><div class="ph"><img src="img/salted.png" alt="Salted Caramel" loading="lazy" draggable="false"></div><b>Salted Caramel</b><small>Karamelnya tipis-tipis tapi berasa.</small></a><a class="polo" href="maciato.html" style="--c:#b8742f"><div class="ph"><img src="img/maciato.png" alt="Caramel Macchiato" loading="lazy" draggable="false"></div><b>Caramel Macchiato</b><small>Kopi, susu, dan saus karamel yang estetik.</small></a><a class="polo" href="pistacio.html" style="--c:#8fa66a"><div class="ph"><img src="img/pistacio.png" alt="Pistachio" loading="lazy" draggable="false"></div><b>Pistachio</b><small>Gurih kacang yang bikin kopi naik kelas.</small></a><a class="polo" href="vanila.html" style="--c:#d8b36a"><div class="ph"><img src="img/vanilla.png" alt="Vanilla" loading="lazy" draggable="false"></div><b>Vanilla</b><small>Klasik dan comforting, wangi vanila lembut.</small></a><a class="polo" href="latte.html" style="--c:#b08968"><div class="ph"><img src="img/Caffe Late.png" alt="Cafe Latte" loading="lazy" draggable="false"></div><b>Cafe Latte</b><small>Espresso mantap ketemu susu yang lembut.</small></a><a class="polo" href="hazelnut.html" style="--c:#a9714b"><div class="ph"><img src="img/hazelnut.png" alt="Hazelnut" loading="lazy" draggable="false"></div><b>Hazelnut</b><small>Gurih kacang, aromanya bikin rileks.</small></a></div></div>
+    <div class="mrow"><div class="mtrack"><a class="polo" href="tiramisu.html" style="--c:#9c6b4e"><div class="ph"><img src="img/tiramisu.png" alt="Tiramisu" loading="lazy" draggable="false"></div><b>Tiramisu</b><small>Kayak minum cake Italia yang creamy.</small></a><a class="polo" href="caramel.html" style="--c:#c8803a"><div class="ph"><img src="img/caramel.jpg" alt="Caramel" loading="lazy" draggable="false"></div><b>Caramel</b><small>Si manis yang nggak pernah gagal.</small></a><a class="polo" href="buter.html" style="--c:#d9a441"><div class="ph">B</div><b>Butterscotch</b><small>Karamel mentega, gurih manis bikin nagih.</small></a><a class="polo" href="index.html#menu" style="--c:#5a3925"><div class="ph">A</div><b>Americano</b><small>Espresso dan air, simpel dan tegas.</small></a><a class="polo" href="rumbulion.html" style="--c:#7a4a2b"><div class="ph"><img src="img/rumbullion.png" alt="Rumbullion" loading="lazy" draggable="false"></div><b>Rumbullion</b><small>Menu classic Folkpresso dengan rasa beda.</small></a><a class="polo" href="almond.html" style="--c:#c9a27a"><div class="ph"><img src="img/almond.png" alt="Almond" loading="lazy" draggable="false"></div><b>Almond</b><small>Wangi almond, manis-gurih yang lembut.</small></a><a class="polo" href="matcha.html" style="--c:#7da05a"><div class="ph"><img src="img/matcha.png" alt="Matcha Latte" loading="lazy" draggable="false"></div><b>Matcha Latte</b><small>Matcha earthy ketemu susu seger.</small></a><a class="polo" href="coklat.html" style="--c:#6b3f2a"><div class="ph"><img src="img/coklat.png" alt="Chocolate" loading="lazy" draggable="false"></div><b>Chocolate</b><small>Cokelat pekat, manisnya pas.</small></a></div></div>
+    </section>
 
-                <a href="index.html" class="btn-back"> Home</a>
-            </div>
-        </div>
-    </main>
-    <script src="product/script.js"></script>
+<section class="cta"><div class="wrap reveal"><h2>Yuk,<br>pesen.</h2><a class="stk ink big" href="https://folkpresso-apk.vercel.app/">Buka aplikasi</a></div></section>
+<footer class="foot"><div class="wrap"><span class="hand">Dibikin di dapur rumah.</span><span>&copy; 2024 Folkpresso Coffee</span><a href="https://www.instagram.com/folkpresso" target="_blank" rel="noopener">@folkpresso</a></div></footer>
+<a href="https://folkpresso-apk.vercel.app/" class="stk sticky-order">Pesan Aren Coffee</a>
+<script src="product/menu.js"></script>
 </body>
-
 </html>
